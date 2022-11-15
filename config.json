@@ -1,0 +1,18 @@
+{
+    "title": "App load in json",
+    "geometry": "350x350",
+    "buttons": {
+        "PIN1": {
+            "bg": "gray",
+            "text": "PIN 1",
+            "font": "Courier 9",
+            "width": 10,
+            "bd": 4,
+            "relief": "raised",
+            "command": "all_on",
+            "relx": 0.15,
+            "rely": 0.25,
+            "anchor": "CENTER"
+        }
+    }
+}
