@@ -1,58 +1,20 @@
-from tkinter import Tk, Button
-import json
+from tkinter import Tk
+from loadConfiguration import load_configurations
+from createObjects import creator
 
 
 GEOMETRY = '350x350'
 TITLE = 'New app'
-path_config = "config.json"
-
-
-def all_on():
-    pass
-
-def all_off():
-    pass
-
-COMMANDS = {
-    'all_on': all_on,
-    'all_off': all_off,
-}
-
-
-def load_json(path:str) -> None | dict:
-    try:
-        with open(path) as file:
-            data = json.load(file)
-        return data
-    except FileNotFoundError:
-        exit('Config file not found!')
-
-
-def create_button(root, buttons:dict) -> None | list:
-    buttons_list = []
-    for pr in buttons.values():
-        button = Button(root, bg=pr['bg'], text=pr['text'], font=pr['font'], width=pr['width'], bd=pr['bd'], relief=pr['relief'], command=COMMANDS[pr['command']])
-        button.pack(pady=5)
-        button.place(relx=pr['relx'], rely=pr['rely'])
-        buttons_list.append(button)
-    return(buttons_list)
-
-
-def create_objects(root, objects:dict) -> None:
-    print(objects)
-    for item, value in objects.items():
-        match item:
-            case 'buttons':
-                create_button(root=root, buttons=value)
+path_config = "/home/legal/github/hour_contract_year/Task#1_v3_HWCleware/TkUSB/config.xml"
 
 
 def init_tk() -> None:
     root = Tk()
-    config = load_json(path=path_config)
-    objects = {item: value for item, value in config.items() if not item in ['title', 'geometry']}
-    create_objects(root=root, objects=objects)
-    root.title(config['title'])
-    root.geometry(config['geometry'])
+    config = load_configurations(path=path_config)
+    objects = {item: value for item, value in config['TkUSB'].items() if not item in ['title', 'geometry']}
+    print(creator(root=root, objects=objects))
+    root.title(config['TkUSB']['title'])
+    root.geometry(config['TkUSB']['geometry'])
     root.mainloop()
 
 

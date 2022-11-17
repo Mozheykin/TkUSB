@@ -1,0 +1,43 @@
+﻿<?xml version="1.0"?>
+<TkUSB>
+     <title>App load on xml</title>
+     <geometry>350x350</geometry>
+     <buttons>
+          <PIN1>
+               <bg>gray</bg>
+               <text>PIN 1</text>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief>raised</relief>
+               <command>all_on</command>
+               <relx>0.15</relx>
+               <rely>0.25</rely>
+               <anchor>CENTER</anchor>
+          </PIN1>
+          <PIN2>
+               <bg>gray</bg>
+               <text>PIN 2</text>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief>raised</relief>
+               <command>all_on</command>
+               <relx>0.15</relx>
+               <rely>0.35</rely>
+               <anchor>CENTER</anchor>
+          </PIN2>
+          <PIN3>
+               <bg>gray</bg>
+               <text>PIN 3</text>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief>raised</relief>
+               <command>all_on</command>
+               <relx>0.15</relx>
+               <rely>0.45</rely>
+               <anchor>CENTER</anchor>
+          </PIN3>
+     </buttons>
+</TkUSB>
