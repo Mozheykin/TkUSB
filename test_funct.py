@@ -1,6 +1,7 @@
 from tkinter import Tk
 from loadConfiguration import load_configurations
 from createObjects import creator
+from pprint import pprint
 
 
 GEOMETRY = '350x350'
@@ -12,7 +13,7 @@ def init_tk() -> None:
     root = Tk()
     config = load_configurations(path=path_config)
     objects = {item: value for item, value in config['TkUSB'].items() if not item in ['title', 'geometry']}
-    print(creator(root=root, objects=objects))
+    pprint(creator(root=root, objects=objects))
     root.title(config['TkUSB']['title'])
     root.geometry(config['TkUSB']['geometry'])
     root.mainloop()

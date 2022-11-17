@@ -22,7 +22,7 @@
                <width>10</width>
                <bd>4</bd>
                <relief>raised</relief>
-               <command>all_on</command>
+               <command>all_off</command>
                <relx>0.15</relx>
                <rely>0.35</rely>
                <anchor>CENTER</anchor>
@@ -34,10 +34,34 @@
                <width>10</width>
                <bd>4</bd>
                <relief>raised</relief>
-               <command>all_on</command>
+               <command>change_collor</command>
                <relx>0.15</relx>
                <rely>0.45</rely>
                <anchor>CENTER</anchor>
           </PIN3>
      </buttons>
+     <labels>
+          <LABEL1>
+               <text>Hello i'm label 1</text>
+               <relx>0.4</relx>
+               <rely>0.15</rely>
+               <anchor>CENTER</anchor>
+          </LABEL1>
+     </labels>
+     <entrys>
+          <ENTRY1>
+               <width>10</width>
+               <relx>0.65</relx>
+               <rely>0.65</rely>
+          </ENTRY1>
+     </entrys>
+     <checkbuttons>
+          <CHECKBUTTON1>
+               <text>Checkbutton1</text>
+               <width>15</width>
+               <relx>0.65</relx>
+               <rely>0.75</rely>
+          </CHECKBUTTON1>
+     </checkbuttons>
+
 </TkUSB>
