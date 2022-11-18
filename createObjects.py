@@ -8,8 +8,6 @@ anchor = {
 }
 
 
-
-
 def gp(input_dict:dict, item='', custom='') -> str | int | float: # get parametrs on dict
     return input_dict.get(item, custom)
 
