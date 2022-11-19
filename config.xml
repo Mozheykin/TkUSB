@@ -2,6 +2,7 @@
 <TkUSB>
      <title>App load on xml</title>
      <geometry>350x350</geometry>
+     <main_color>gray</main_color>
      <buttons>
           <PIN1>
                <bg>gray</bg>
@@ -22,7 +23,7 @@
                <width>10</width>
                <bd>4</bd>
                <relief>raised</relief>
-               <command>all_off</command>
+               <command>change_collor</command>
                <relx>0.15</relx>
                <rely>0.35</rely>
                <anchor>CENTER</anchor>
@@ -63,5 +64,20 @@
                <rely>0.75</rely>
           </CHECKBUTTON1>
      </checkbuttons>
+     <img_buttons>
+          <CHB1>
+               <type>check</type>
+               <image>yes</image>
+               <bd>0</bd>
+               <command>change_checkbutton_position</command>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>6</subsample>
+               <relx>0.25</relx>
+               <rely>0.95</rely>
+               <anchor>CENTER</anchor>
+          </CHB1>
+     </img_buttons>
 
 </TkUSB>
