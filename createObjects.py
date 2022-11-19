@@ -81,7 +81,7 @@ class CreateObjects:
             img_button.image = out_button
             img_button.pack(pady=5)
             img_button.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor')])
-            img_buttons_dict[name] = [img_button, gp(pr, 'image', 'yes')]
+            img_buttons_dict[name] = [img_button, gp(pr, 'image', 'yes'), gp(pr, 'type', 'check')]
         return(img_buttons_dict)
 
 

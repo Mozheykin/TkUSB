@@ -78,6 +78,19 @@
                <rely>0.95</rely>
                <anchor>CENTER</anchor>
           </CHB1>
+          <CHB2>
+               <type>tick</type>
+               <image>yes</image>
+               <bd>0</bd>
+               <command>change_checkbutton_position</command>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>6</subsample>
+               <relx>0.75</relx>
+               <rely>0.50</rely>
+               <anchor>CENTER</anchor>
+          </CHB2>
      </img_buttons>
 
 </TkUSB>
