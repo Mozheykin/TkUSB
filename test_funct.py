@@ -22,7 +22,6 @@ def init_tk() -> None:
     root.mainloop()
 
 
-
 def main():
     try:
         init_tk()

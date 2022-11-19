@@ -18,9 +18,6 @@ class CreateObjects:
     def __init__(self, root, heigth:int, width:int, canvas:bool=True) -> None:
         self.root = root
         self.created_objects = {}
-        #if canvas:
-            #self.created_objects['canvas'] = self.create_canvas(heigth=heigth, width=width)
-            #self.create_picture_button()
 
     def create_objects(self, objects:dict) -> dict:
         for item, value in objects.items():
@@ -86,26 +83,6 @@ class CreateObjects:
             img_button.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor')])
             img_buttons_dict[name] = [img_button, gp(pr, 'image', 'yes')]
         return(img_buttons_dict)
-
-    def create_canvas(self, heigth:int, width:int, bg:str='gray') -> dict:
-        #canvas = Canvas(self.root, height=heigth, width=width, bg=bg, highlightthickness=0)
-        #canvas.pack()
-        #out_button = PhotoImage(file='button.png')
-        #out_button = Image.open('button.png')
-        out_button = PhotoImage(file='buttons/check-yes.png')
-        out_button = out_button.subsample(6,6)
-        #img = canvas.create_image(150, 150, anchor="nw", image=out_button)
-        img_button = Button(self.root, image=out_button, command=partial(COMMANDS['change_checkbutton_position'],self.root, 'CHB1','img_buttons'), bd=0, highlightthickness=0, activebackground='gray', bg='gray')
-        img_button.image = out_button
-        img_button.pack(pady=5)
-        img_button.place(relx=0.25, rely=0.75, anchor=CENTER)
-        self.created_objects['img_buttons'] = {'CHB1': [img_button, 'yes']}
-        #img_button.place(x=10, y=10, anchor=CENTER)
-        #label = Label(self.root, image=ou_button)
-        #label.image = ou_button
-        #label.place(x=0, y=0)
-        #label.bind('<Button-1>', lambda x: print('test'))
-        return img_button
 
 
 def creator(root, objects:dict, canvas:bool, heigth:int, width:int) -> dict:
