@@ -18,13 +18,16 @@ def all_off(root, name:str, _type:str):
         button.config(bg=COLLOR0)
 
 
-def change_collor(root, name:str, _type:str) -> None:
+def change_collor(root, name:str, _type:str, collor:str=None) -> None:
     type_object = createObjects.CreateObjects.Objects.get(_type)
     _object = type_object.get(name)
-    if _object['bg'] == COLLOR0:
-        _object.config(bg=COLLOR1)
+    if not collor:
+        if _object['bg'] == COLLOR0:
+            _object.config(bg=COLLOR1)
+        else:
+            _object.config(bg=COLLOR0)
     else:
-        _object.config(bg=COLLOR0)
+        _object.config(bg=collor)
 
 
 def get_picture(name_button:str, change_x:int, change_y:int) -> PhotoImage:

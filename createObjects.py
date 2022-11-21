@@ -15,11 +15,13 @@ def gp(input_dict:dict, item='', custom='') -> str | int | float: # get parametr
 class CreateObjects:
     Objects = {}
 
-    def __init__(self, root, heigth:int, width:int, canvas:bool=True) -> None:
+    def __init__(self, root, dll, heigth:int, width:int, canvas:bool=True) -> None:
         self.root = root
+        self.dll = dll
         self.created_objects = {}
 
     def create_objects(self, objects:dict) -> dict:
+        self.created_objects['DLL'] = self.dll
         for item, value in objects.items():
             match item:
                 case 'buttons':
@@ -87,7 +89,6 @@ class CreateObjects:
 
 
 def creator(root, dll, objects:dict, canvas:bool, heigth:int, width:int) -> dict:
-    co = CreateObjects(root=root, canvas=canvas, heigth=heigth, width=width)
+    co = CreateObjects(root=root, dll=dll, canvas=canvas, heigth=heigth, width=width)
     result = co.create_objects(objects=objects)
-    CreateObjects.Objects['DLL'] = dll
     return result

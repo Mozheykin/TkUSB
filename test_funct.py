@@ -4,6 +4,7 @@ from createObjects import creator
 from pprint import pprint
 from errors import NotConfirationsOnFile
 from ctypes import windll
+from other_sync import sync
 
 LIBRARY = 'USBaccessX64.dll'
 MAIN_COLLOR = 'gray'
@@ -20,7 +21,8 @@ def init_tk() -> None:
     config = load_configurations(path=path_config)
     objects = {item: value for item, value in config['TkUSB'].items() if not item in ['title', 'geometry']}
     heigth, width = config['TkUSB']['geometry'].split('x')
-    pprint(creator(root=root, dll=dll, objects=objects,canvas=True, heigth=int(heigth), width=int(width)))
+    objects = creator(root=root, dll=dll, objects=objects,canvas=True, heigth=int(heigth), width=int(width))
+    sync(root, dll, objects['buttons'])
     root.title(config['TkUSB']['title'])
     root.geometry(config['TkUSB']['geometry'])
     root.mainloop()
