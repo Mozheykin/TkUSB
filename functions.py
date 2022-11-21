@@ -7,10 +7,16 @@ COLLOR0, COLLOR1 = 'red', 'green'
 
 
 def all_on(root, name:str, _type:str):
-    print(f'{name} {_type}all on')
+    buttons = createObjects.CreateObjects.Objects.get('buttons')
+    for button in buttons.values():
+        button.config(bg=COLLOR1)
+
 
 def all_off(root, name:str, _type:str):
-    print('all off')
+    buttons = createObjects.CreateObjects.Objects.get('buttons')
+    for button in buttons.values():
+        button.config(bg=COLLOR0)
+
 
 def change_collor(root, name:str, _type:str) -> None:
     type_object = createObjects.CreateObjects.Objects.get(_type)
@@ -20,13 +26,16 @@ def change_collor(root, name:str, _type:str) -> None:
     else:
         _object.config(bg=COLLOR0)
 
+
 def get_picture(name_button:str, change_x:int, change_y:int) -> PhotoImage:
     img = PhotoImage(file=f'buttons/{name_button}.png')
     img = img.subsample(change_x, change_y)
     return img
 
+
 def get_position_object(_object):
     return _object.winfo_x(), _object.winfo_y()
+
 
 def change_checkbutton_position(root, name:str, _type:str) -> None:
     type_object = createObjects.CreateObjects.Objects.get(_type)
@@ -50,6 +59,8 @@ def change_checkbutton_position(root, name:str, _type:str) -> None:
     img_button.pack(pady=5)
     img_button.place(x=x, y=y)
     createObjects.CreateObjects.Objects[_type][name] = [img_button, actuall_button, type_object.get(name)[2]]
+
+
 
 COMMANDS = {
     'all_on': all_on,

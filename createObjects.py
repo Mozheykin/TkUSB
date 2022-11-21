@@ -36,6 +36,7 @@ class CreateObjects:
         return self.created_objects
 
     def create_button(self, buttons:dict) -> dict:
+        '''Create buttons, PIN buttons names is "PIN_3" use function change_collor'''
         buttons_dict = dict()
         for name, pr in buttons.items(): #pr - parametrs dict
             button = Button(self.root, bg=gp(pr,'bg'), text=gp(pr,'text'), font=gp(pr,'font'), 
@@ -85,7 +86,8 @@ class CreateObjects:
         return(img_buttons_dict)
 
 
-def creator(root, objects:dict, canvas:bool, heigth:int, width:int) -> dict:
+def creator(root, dll, objects:dict, canvas:bool, heigth:int, width:int) -> dict:
     co = CreateObjects(root=root, canvas=canvas, heigth=heigth, width=width)
     result = co.create_objects(objects=objects)
+    CreateObjects.Objects['DLL'] = dll
     return result

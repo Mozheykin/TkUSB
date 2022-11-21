@@ -3,7 +3,9 @@ from loadConfiguration import load_configurations
 from createObjects import creator
 from pprint import pprint
 from errors import NotConfirationsOnFile
+from ctypes import windll
 
+LIBRARY = 'USBaccessX64.dll'
 MAIN_COLLOR = 'gray'
 GEOMETRY = '350x350'
 TITLE = 'New app'
@@ -11,12 +13,14 @@ path_config = "/home/legal/github/hour_contract_year/Task1_v3_HWCleware/TkUSB/co
 
 
 def init_tk() -> None:
+    dll = windll.LoadLibrary(LIBRARY)
+    dll.FCWInitObject()
     root = Tk()
     root.config(bg=MAIN_COLLOR)
     config = load_configurations(path=path_config)
     objects = {item: value for item, value in config['TkUSB'].items() if not item in ['title', 'geometry']}
     heigth, width = config['TkUSB']['geometry'].split('x')
-    pprint(creator(root=root, objects=objects,canvas=True, heigth=int(heigth), width=int(width)))
+    pprint(creator(root=root, dll=dll, objects=objects,canvas=True, heigth=int(heigth), width=int(width)))
     root.title(config['TkUSB']['title'])
     root.geometry(config['TkUSB']['geometry'])
     root.mainloop()

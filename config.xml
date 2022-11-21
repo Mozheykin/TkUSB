@@ -4,7 +4,7 @@
      <geometry>350x350</geometry>
      <main_color>gray</main_color>
      <buttons>
-          <PIN1>
+          <PIN_1>
                <bg>gray</bg>
                <text>PIN 1</text>
                <font>Courier 9</font>
@@ -15,8 +15,8 @@
                <relx>0.15</relx>
                <rely>0.25</rely>
                <anchor>CENTER</anchor>
-          </PIN1>
-          <PIN2>
+          </PIN_1>
+          <PIN_2>
                <bg>gray</bg>
                <text>PIN 2</text>
                <font>Courier 9</font>
@@ -27,8 +27,8 @@
                <relx>0.15</relx>
                <rely>0.35</rely>
                <anchor>CENTER</anchor>
-          </PIN2>
-          <PIN3>
+          </PIN_2>
+          <PIN_3>
                <bg>gray</bg>
                <text>PIN 3</text>
                <font>Courier 9</font>
@@ -39,7 +39,7 @@
                <relx>0.15</relx>
                <rely>0.45</rely>
                <anchor>CENTER</anchor>
-          </PIN3>
+          </PIN_3>
      </buttons>
      <labels>
           <LABEL1>
