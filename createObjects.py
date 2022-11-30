@@ -27,7 +27,10 @@ class CreateObjects:
         for item, value in objects.items():
             match item:
                 case 'buttons':
-                    self.created_objects[item] = self.create_button(buttons=value, config_user=config_user.get('buttons', {}))
+                    if config_user:
+                        self.created_objects[item] = self.create_button(buttons=value, config_user=config_user.get('buttons'))
+                    else: 
+                        self.created_objects[item] = self.create_button(buttons=value)
                 case 'labels':
                     self.created_objects[item] = self.create_label(labels=value)
                 case 'entrys':
@@ -51,7 +54,7 @@ class CreateObjects:
         return gp(pr, 'bg')
         
 
-    def create_button(self, buttons:dict, config_user:dict) -> dict:
+    def create_button(self, buttons:dict, config_user:dict={}) -> dict:
         '''Create buttons, PIN buttons names is "PIN_3" use function change_collor'''
         buttons_dict = dict()
         for name, pr in buttons.items(): #pr - parametrs dict

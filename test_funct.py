@@ -1,17 +1,32 @@
 from tkinter import Tk
-from loadConfiguration import load_configurations
-from createObjects import creator
+from loadConfiguration import load_configurations, save_configurations
+from createObjects import creator, CreateObjects
 from pprint import pprint
 from errors import NotConfirationsOnFile
 #from ctypes import windll
 from other_sync import sync
-from functions import MAIN_COLLOR
+from functions import MAIN_COLLOR, COLLOR1
 
 LIBRARY = 'USBaccessX64.dll'
 GEOMETRY = '350x350'
 TITLE = 'New app'
 path_user_config = "user_config.xml"
 path_configs = "configs.xml"
+
+
+def on_exit(event):
+    _objects = CreateObjects.Objects
+    data = {}
+    for _object_group, _object_pr in _objects.items():
+        if _object_pr is dict:
+            for name, _object in _object_pr:
+                match _object_group:
+                    case 'buttons': 
+                        if _object['bg'] == COLLOR1:
+                            data[_object_group][name] = 1
+                        else:
+                            data[_object_group][name] = 0
+    save_configurations(path_user=path_user_config, objects=data)
 
 
 def init_tk() -> None:
@@ -23,11 +38,12 @@ def init_tk() -> None:
     objects = {item: value for item, value in config['TkUSB'].items() if not item in ['title', 'geometry']}
     heigth, width = config['TkUSB']['geometry'].split('x')
     objects = creator(root=root, objects=objects, config_user=config_user['TkUSB'], heigth=int(heigth), width=int(width))
-    pprint(objects)
     #pprint(sync(root, dll, objects['buttons']))
     root.title(config['TkUSB']['title'])
     root.geometry(config['TkUSB']['geometry'])
+    root.bind('<Destroy>', on_exit)
     root.mainloop()
+    
 
 
 def main():

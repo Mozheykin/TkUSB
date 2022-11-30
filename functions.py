@@ -1,6 +1,7 @@
 import createObjects
-from tkinter import PhotoImage, Button, CENTER
+from tkinter import PhotoImage, Button 
 from functools import partial
+from loadConfiguration import save_configurations
 
 
 COLLOR0, COLLOR1 = 'red', 'green'
@@ -63,6 +64,8 @@ def change_checkbutton_position(root, name:str, _type:str) -> None:
     img_button.pack(pady=5)
     img_button.place(x=x, y=y)
     createObjects.CreateObjects.Objects[_type][name] = [img_button, actuall_button, type_object.get(name)[2]]
+
+
 
 
 

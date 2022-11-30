@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 class Configurations:
-    def __init__(self, path_user:str, path_configs:str) -> None:
+    def __init__(self, path_user:str, path_configs:str='') -> None:
         self.path_user = path_user
         self.path_configs = path_configs
     
@@ -23,15 +23,18 @@ class ConfigurationsJson(Configurations):
         with open(self.path) as file:
             data = json.load(file)
         return data
-
+    
 
 class ConfigurationsXml(Configurations):
     def load(self) -> None | dict:
         import xmltodict
         with open(self.path_configs) as file:
             data = xmltodict.parse(file.read())
-        with open(self.path_user) as file:
-            data_user = xmltodict.parse(file.read())
+        try:
+            with open(self.path_user) as file:
+                data_user = xmltodict.parse(file.read())
+        except Exception:
+            data_user = {}
         return data, data_user
     
     def save(self, objects:dict) -> None:
@@ -45,20 +48,23 @@ class ConfigurationsXml(Configurations):
         tree.write(self.path_user)
 
 
-
-def load_configurations(path_user:str, path_configs:str) -> None | dict:
-    init_class = path_user.split('.')[-1]
-    if Path(path_user).is_file():
+def get_init_class(path:str) -> Configurations:
+    init_class = path.split('.')[-1]
+    if Path(path).is_file():
         match init_class:
             case 'json':
-                config = ConfigurationsJson(path_user=path_user, path_configs=path_configs)
-                if not config:
-                    raise NotConfirationsOnFile
-                return config.load()
+                return ConfigurationsJson
             case 'xml':
-                config = ConfigurationsXml(path_user=path_user, path_configs=path_configs)
-                if not config:
-                    raise NotConfirationsOnFile
-                return config.load()
+                return ConfigurationsXml
     else:
         raise NotConfirationsOnFile 
+
+
+def load_configurations(path_user:str, path_configs:str) -> None | dict:
+    config = get_init_class(path=path_configs)(path_user=path_user, path_configs=path_configs)
+    return config.load()
+
+
+def save_configurations(path_user:str, objects:dict) -> None:
+    config = get_init_class(path=path_user)(path_user=path_user)
+    config.save(objects=objects)
