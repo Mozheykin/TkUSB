@@ -4,6 +4,7 @@ from functools import partial
 
 
 COLLOR0, COLLOR1 = 'red', 'green'
+MAIN_COLLOR = 'gray'
 
 
 def all_on(root, name:str, _type:str):

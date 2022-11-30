@@ -95,6 +95,7 @@
      <comboboxs>
           <CB1>
                <width>10</width>
+               <height>5</height>
                <relx>0.35</relx>
                <rely>0.55</rely>
                <anchor>CENTER</anchor>

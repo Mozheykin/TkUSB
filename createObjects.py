@@ -1,6 +1,6 @@
 from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage, StringVar
 from tkinter.ttk import Combobox
-from functions import COMMANDS, COLLOR0, COLLOR1
+from functions import COMMANDS, COLLOR0, COLLOR1, MAIN_COLLOR
 from functools import partial
 
 
@@ -68,7 +68,7 @@ class CreateObjects:
     def create_label(self, labels:dict) -> dict:
         labels_dict = dict()
         for name, pr in labels.items():
-            label = Label(text=gp(pr,'text'), background='gray', highlightthickness=0)
+            label = Label(text=gp(pr,'text'), background=MAIN_COLLOR, highlightthickness=0)
             label.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor')])
             labels_dict[name] = label
         return(labels_dict)
@@ -84,7 +84,7 @@ class CreateObjects:
     def create_checkbutton(self, checkbuttons:dict) -> dict:
         checkbutton_dict =dict()
         for name, pr in checkbuttons.items():
-            checkbutton = Checkbutton(width=gp(pr,'width', 10), text=gp(pr,'text'), background='gray')
+            checkbutton = Checkbutton(width=gp(pr,'width', 10), text=gp(pr,'text'), background=MAIN_COLLOR)
             checkbutton.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor','CENTER')])
             checkbutton_dict[name] = checkbutton
         return(checkbutton_dict)
@@ -96,7 +96,7 @@ class CreateObjects:
             out_button = PhotoImage(file=f'buttons/{name_button}.png')
             subsample = int(gp(pr, 'subsample', 6))
             out_button = out_button.subsample(subsample, subsample)
-            img_button = Button(self.root, image=out_button, command=partial(COMMANDS[gp(pr,'command')],self.root, name,'img_buttons'), bd=gp(pr, 'bd', 0), highlightthickness=gp(pr, 'highlightthickness', 0), activebackground=gp(pr, 'activebackground', 'gray'), bg=gp(pr, 'bg', 'gray'))
+            img_button = Button(self.root, image=out_button, command=partial(COMMANDS[gp(pr,'command')],self.root, name,'img_buttons'), bd=gp(pr, 'bd', 0), highlightthickness=gp(pr, 'highlightthickness', 0), activebackground=gp(pr, 'activebackground', MAIN_COLLOR), bg=gp(pr, 'bg', MAIN_COLLOR))
             img_button.image = out_button
             img_button.pack(pady=5)
             img_button.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor')])
@@ -106,7 +106,7 @@ class CreateObjects:
     def create_combobox(self, comboboxs:dict) -> dict:
         combobox_dict = {}
         for name, pr in comboboxs.items():
-            combobox = Combobox(self.root, textvariable='Select device', values=['test', 'test1'])
+            combobox = Combobox(self.root, textvariable='Select device', values=['test', 'test1'], width=gp(pr, 'width', 10), height=gp(pr, 'height', 5))
             combobox.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor')])
             combobox_dict[name] = combobox
         return combobox_dict

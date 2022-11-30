@@ -5,9 +5,9 @@ from pprint import pprint
 from errors import NotConfirationsOnFile
 #from ctypes import windll
 from other_sync import sync
+from functions import MAIN_COLLOR
 
 LIBRARY = 'USBaccessX64.dll'
-MAIN_COLLOR = 'gray'
 GEOMETRY = '350x350'
 TITLE = 'New app'
 path_user_config = "user_config.xml"
