@@ -38,7 +38,10 @@ class CreateObjects:
                 case 'checkbuttons':
                     self.created_objects[item] = self.create_checkbutton(checkbuttons=value)
                 case 'img_buttons':
-                    self.created_objects[item] = self.create_picture_button(img_buttons=value)
+                    if config_user:
+                        self.created_objects[item] = self.create_picture_button(img_buttons=value, config_user=config_user.get('img_buttons'))
+                    else:
+                        self.created_objects[item] = self.create_picture_button(img_buttons=value)
                 case 'comboboxs':
                     self.created_objects[item] = self.create_combobox(comboboxs=value)
         CreateObjects.Objects = self.created_objects
@@ -92,10 +95,14 @@ class CreateObjects:
             checkbutton_dict[name] = checkbutton
         return(checkbutton_dict)
     
-    def create_picture_button(self, img_buttons:dict) -> dict:
+    def create_picture_button(self, img_buttons:dict, config_user:dict={}) -> dict:
         img_buttons_dict = {}
         for name, pr in img_buttons.items():
-            name_button = f"{gp(pr, 'type', 'check')}-{gp(pr, 'image', 'yes')}"
+            load_config = config_user.get(name)
+            if load_config:
+                name_button = load_config.get('activate')
+            else:
+                name_button = f"{gp(pr, 'type', 'check')}-{gp(pr, 'image', 'yes')}"
             out_button = PhotoImage(file=f'buttons/{name_button}.png')
             subsample = int(gp(pr, 'subsample', 6))
             out_button = out_button.subsample(subsample, subsample)

@@ -19,6 +19,7 @@ def on_exit(root):
     _objects = CreateObjects.Objects
     data = {
         'buttons': {},
+        'img_buttons': {},
     }
     for _object_group, _object_pr in _objects.items():
         if type(_object_pr) == dict:
@@ -29,6 +30,8 @@ def on_exit(root):
                             data[_object_group][name] = '1'
                         else:
                             data[_object_group][name] = '0'
+                    case 'img_buttons':
+                        data[_object_group][name] = f'{_object[2]}-{_object[1]}'
     save_configurations(path_user=path_user_config, objects=data)
     root.destroy()
 
