@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TkUSB>
+    <buttons>
+        <PIN_1>
+            <activate>1</activate>
+        </PIN_1>
+        <PIN_2>
+            <activate>0</activate>
+        </PIN_2>
+    </buttons>
+</TkUSB>

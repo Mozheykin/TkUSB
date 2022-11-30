@@ -3,26 +3,28 @@ from loadConfiguration import load_configurations
 from createObjects import creator
 from pprint import pprint
 from errors import NotConfirationsOnFile
-from ctypes import windll
+#from ctypes import windll
 from other_sync import sync
 
 LIBRARY = 'USBaccessX64.dll'
 MAIN_COLLOR = 'gray'
 GEOMETRY = '350x350'
 TITLE = 'New app'
-path_config = "/home/legal/github/hour_contract_year/Task1_v3_HWCleware/TkUSB/config.xml"
+path_user_config = "user_config.xml"
+path_configs = "configs.xml"
 
 
 def init_tk() -> None:
-    dll = windll.LoadLibrary(LIBRARY)
-    dll.FCWInitObject()
+    #dll = windll.LoadLibrary(LIBRARY)
+    #dll.FCWInitObject()
     root = Tk()
     root.config(bg=MAIN_COLLOR)
-    config = load_configurations(path=path_config)
+    config, config_user = load_configurations(path_user=path_user_config, path_configs=path_configs)
     objects = {item: value for item, value in config['TkUSB'].items() if not item in ['title', 'geometry']}
     heigth, width = config['TkUSB']['geometry'].split('x')
-    objects = creator(root=root, dll=dll, objects=objects,canvas=True, heigth=int(heigth), width=int(width))
-    sync(root, dll, objects['buttons'])
+    objects = creator(root=root, objects=objects, config_user=config_user['TkUSB'], heigth=int(heigth), width=int(width))
+    pprint(objects)
+    #pprint(sync(root, dll, objects['buttons']))
     root.title(config['TkUSB']['title'])
     root.geometry(config['TkUSB']['geometry'])
     root.mainloop()

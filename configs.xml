@@ -23,7 +23,7 @@
                <width>10</width>
                <bd>4</bd>
                <relief>raised</relief>
-               <command>change_collor</command>
+               <command>all_off</command>
                <relx>0.15</relx>
                <rely>0.35</rely>
                <anchor>CENTER</anchor>
@@ -92,5 +92,13 @@
                <anchor>CENTER</anchor>
           </CHB2>
      </img_buttons>
+     <comboboxs>
+          <CB1>
+               <width>10</width>
+               <relx>0.35</relx>
+               <rely>0.50</rely>
+               <anchor>CENTER</anchor>
+          </CB1>
+     </comboboxs>
 
 </TkUSB>
