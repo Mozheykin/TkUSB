@@ -1,4 +1,4 @@
-from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage
+from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage, StringVar
 from tkinter.ttk import Combobox
 from functions import COMMANDS, COLLOR0, COLLOR1
 from functools import partial
@@ -106,7 +106,8 @@ class CreateObjects:
     def create_combobox(self, comboboxs:dict) -> dict:
         combobox_dict = {}
         for name, pr in comboboxs.items():
-            combobox = Combobox(self.root, width=gp(pr,'width', 10), values=['test', 'test1'])
+            combobox = Combobox(self.root, textvariable='Select device', values=['test', 'test1'])
+            combobox.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor')])
             combobox_dict[name] = combobox
         return combobox_dict
 
