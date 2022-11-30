@@ -43,7 +43,8 @@ class ConfigurationsXml(Configurations):
         for object_class, object_parametrs in objects.items():
             tree_object = ET.SubElement(TkUSB, object_class)
             for name, pr in object_parametrs.items():
-                ET.SubElement(tree_object, name, name='activate').text = pr.get('activate')
+                name_object = ET.SubElement(tree_object, name)
+                ET.SubElement(name_object, 'activate').text = pr
         tree = ET.ElementTree(TkUSB)
         tree.write(self.path_user)
 

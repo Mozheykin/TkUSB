@@ -6,6 +6,7 @@ from errors import NotConfirationsOnFile
 #from ctypes import windll
 from other_sync import sync
 from functions import MAIN_COLLOR, COLLOR1
+from functools import partial
 
 LIBRARY = 'USBaccessX64.dll'
 GEOMETRY = '350x350'
@@ -14,19 +15,22 @@ path_user_config = "user_config.xml"
 path_configs = "configs.xml"
 
 
-def on_exit(event):
+def on_exit(root):
     _objects = CreateObjects.Objects
-    data = {}
+    data = {
+        'buttons': {},
+    }
     for _object_group, _object_pr in _objects.items():
-        if _object_pr is dict:
-            for name, _object in _object_pr:
+        if type(_object_pr) == dict:
+            for name, _object in _object_pr.items():
                 match _object_group:
                     case 'buttons': 
                         if _object['bg'] == COLLOR1:
-                            data[_object_group][name] = 1
+                            data[_object_group][name] = '1'
                         else:
-                            data[_object_group][name] = 0
+                            data[_object_group][name] = '0'
     save_configurations(path_user=path_user_config, objects=data)
+    root.destroy()
 
 
 def init_tk() -> None:
@@ -41,7 +45,7 @@ def init_tk() -> None:
     #pprint(sync(root, dll, objects['buttons']))
     root.title(config['TkUSB']['title'])
     root.geometry(config['TkUSB']['geometry'])
-    root.bind('<Destroy>', on_exit)
+    root.protocol('WM_DELETE_WINDOW', partial(on_exit, root))
     root.mainloop()
     
 

@@ -1,1 +1,1 @@
-<TkUSB />
+<TkUSB><buttons><PIN_1><activate>0</activate></PIN_1><PIN_2><activate>0</activate></PIN_2><PIN_3><activate>1</activate></PIN_3></buttons></TkUSB>
