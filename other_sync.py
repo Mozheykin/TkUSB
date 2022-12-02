@@ -92,4 +92,4 @@ class Sync:
 
     
     def close(self):
-        self.dll.FWCCloseCleware(0)
+        self.dll.FWCCloseCleware(self.cw)
