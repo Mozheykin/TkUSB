@@ -122,7 +122,7 @@ class CreateObjects:
         return combobox_dict
 
 
-def creator(root, objects:dict, config_user:dict, heigth:int, width:int) -> dict:
-    co = CreateObjects(root=root, heigth=heigth, width=width)
+def creator(root, dll, objects:dict, config_user:dict, heigth:int, width:int) -> dict:
+    co = CreateObjects(root=root, dll=dll, heigth=heigth, width=width)
     result = co.create_objects(objects=objects, config_user=config_user)
     return result

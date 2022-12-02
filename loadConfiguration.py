@@ -28,8 +28,11 @@ class ConfigurationsJson(Configurations):
 class ConfigurationsXml(Configurations):
     def load(self) -> None | dict:
         import xmltodict
-        with open(self.path_configs) as file:
-            data = xmltodict.parse(file.read())
+        import xml.etree.ElementTree as ET
+        #with open(self.path_configs) as file:
+        #    data = xmltodict.parse(file.read())
+        xml = ET.tostring(ET.parse(self.path_configs).getroot())
+        data = xmltodict.parse(xml, attr_prefix="@", cdata_key="#text", dict_constructor=dict)
         try:
             with open(self.path_user) as file:
                 data_user = xmltodict.parse(file.read())

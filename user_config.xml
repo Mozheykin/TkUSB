@@ -1,1 +1,1 @@
-<TkUSB><buttons><PIN_1><activate>0</activate></PIN_1><PIN_2><activate>0</activate></PIN_2><PIN_3><activate>1</activate></PIN_3></buttons><img_buttons><CHB1><activate>check-yes</activate></CHB1><CHB2><activate>tick-no</activate></CHB2></img_buttons></TkUSB>
+<TkUSB><buttons><PIN_1><activate>0</activate></PIN_1><PIN_2><activate>0</activate></PIN_2><PIN_3><activate>1</activate></PIN_3></buttons><img_buttons><CHB1><activate>check-yes</activate></CHB1><CHB2><activate>tick-yes</activate></CHB2></img_buttons></TkUSB>

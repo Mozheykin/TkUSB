@@ -3,12 +3,11 @@ from loadConfiguration import load_configurations, save_configurations
 from createObjects import creator, CreateObjects
 from pprint import pprint
 from errors import NotConfirationsOnFile
-#from ctypes import windll
+
 from other_sync import sync
 from functions import MAIN_COLLOR, COLLOR1
 from functools import partial
 
-LIBRARY = 'USBaccessX64.dll'
 GEOMETRY = '350x350'
 TITLE = 'New app'
 path_user_config = "user_config.xml"
@@ -37,14 +36,12 @@ def on_exit(root):
 
 
 def init_tk() -> None:
-    #dll = windll.LoadLibrary(LIBRARY)
-    #dll.FCWInitObject()
     root = Tk()
     root.config(bg=MAIN_COLLOR)
     config, config_user = load_configurations(path_user=path_user_config, path_configs=path_configs)
     objects = {item: value for item, value in config['TkUSB'].items() if not item in ['title', 'geometry']}
     heigth, width = config['TkUSB']['geometry'].split('x')
-    objects = creator(root=root, objects=objects, config_user=config_user['TkUSB'], heigth=int(heigth), width=int(width))
+    objects = creator(root=root, dll=dll, objects=objects, config_user=config_user['TkUSB'], heigth=int(heigth), width=int(width))
     #pprint(sync(root, dll, objects['buttons']))
     root.title(config['TkUSB']['title'])
     root.geometry(config['TkUSB']['geometry'])
