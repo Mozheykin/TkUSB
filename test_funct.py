@@ -3,8 +3,7 @@ from loadConfiguration import load_configurations, save_configurations
 from createObjects import creator, CreateObjects
 from pprint import pprint
 from errors import NotConfirationsOnFile
-
-from other_sync import sync
+from other_sync import Sync
 from functions import MAIN_COLLOR, COLLOR1
 from functools import partial
 
@@ -14,7 +13,7 @@ path_user_config = "user_config.xml"
 path_configs = "configs.xml"
 
 
-def on_exit(root):
+def on_exit(root, dll):
     _objects = CreateObjects.Objects
     data = {
         'buttons': {},
@@ -32,6 +31,7 @@ def on_exit(root):
                     case 'img_buttons':
                         data[_object_group][name] = f'{_object[2]}-{_object[1]}'
     save_configurations(path_user=path_user_config, objects=data)
+    dll.close()
     root.destroy()
 
 
@@ -41,11 +41,12 @@ def init_tk() -> None:
     config, config_user = load_configurations(path_user=path_user_config, path_configs=path_configs)
     objects = {item: value for item, value in config['TkUSB'].items() if not item in ['title', 'geometry']}
     heigth, width = config['TkUSB']['geometry'].split('x')
+    dll = Sync(root=root)
     objects = creator(root=root, dll=dll, objects=objects, config_user=config_user['TkUSB'], heigth=int(heigth), width=int(width))
     #pprint(sync(root, dll, objects['buttons']))
     root.title(config['TkUSB']['title'])
     root.geometry(config['TkUSB']['geometry'])
-    root.protocol('WM_DELETE_WINDOW', partial(on_exit, root))
+    root.protocol('WM_DELETE_WINDOW', partial(on_exit, root, dll))
     root.mainloop()
     
 
