@@ -35,8 +35,8 @@ class Sync:
                     'devVersion': devVersion,
                     }
                 
-                for pin in range(1, 9):
-                    self.devices[devNum][f'PIN_{pin}'] = self.dll.FCWGetSwitch(self.cw, devNum, 0x10 + pin)
+                for pin in range(0, 8):
+                    self.devices[devNum][f'PIN_{pin + 1}'] = self.dll.FCWGetSwitch(self.cw, devNum, 0x10 + pin)
         logger.info(f'self.devices = {self.devices}')
         return self.devices
 
@@ -98,26 +98,29 @@ class Sync:
 
 
 def test():
-    sync = Sync(root=None)
-    sync.update_all_devices() # get all device in dict
-    _device_for_selected = sync.get_list_devices() # get list device for combobox
-    # first device get PIN1 and two PIN3, PIN5 for 0 device
-    select0_device = _device_for_selected[0]
-    serNum0_device = select0_device['serNum']
-    sync.get_pin_param(serNum=serNum0_device, PIN='PIN_1')
-    sync.get_pin_param(serNum=serNum0_device, PINS=['PIN_3', 'PIN_5'])
-    # second devise set PIN2 and two PIN5, PIN6 for 1 device
-    select1_device = _device_for_selected[1]
-    serNum1_device = select1_device['serNum']
-    sync.set_pin_param(serNum=select1_device, PIN='PIN_2', value=1)
-    sync.set_pin_param(serNum=serNum1_device, PINS=['PIN_5', 'PIN_6'], values=[1, 1])
-    # therd devise set all PINS 1 for 2 device
-    select2_device = _device_for_selected[2]
-    serNum2_device = select2_device['serNum']
-    sync.set_multi_switch(serNum=serNum2_device, value=1)
-    # four device get all PINS for 1 device
-    sync.get_multi_switch(serNum=serNum1_device, value=1)
-    sync.close()
+    try:
+        sync = Sync(root=None)
+        _device_for_selected = sync.update_all_devices() # get all device in dict
+        sync.get_list_devices() # get list device for combobox
+        # first device get PIN1 and two PIN3, PIN5 for 0 device
+        select0_device = _device_for_selected[0]
+        serNum0_device = select0_device['serNum']
+        sync.get_pin_param(serNum=serNum0_device, PIN='PIN_1')
+        sync.get_pin_param(serNum=serNum0_device, PINS=['PIN_3', 'PIN_5'])
+        # second devise set PIN2 and two PIN5, PIN6 for 1 device
+        select1_device = _device_for_selected[1]
+        serNum1_device = select1_device['serNum']
+        sync.set_pin_param(serNum=select1_device, PIN='PIN_2', value=1)
+        sync.set_pin_param(serNum=serNum1_device, PINS=['PIN_5', 'PIN_6'], values=[1, 1])
+        # therd devise set all PINS 1 for 2 device
+        select2_device = _device_for_selected[2]
+        serNum2_device = select2_device['serNum']
+        sync.set_multi_switch(serNum=serNum2_device, value=1)
+        # four device get all PINS for 1 device
+        sync.get_multi_switch(serNum=serNum1_device, value=1)
+        sync.close()
+    except Exception as ex:
+        logger.error(ex)
 
 
 
