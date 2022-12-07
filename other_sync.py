@@ -20,7 +20,7 @@ class Sync:
         }
     }
 
-    def __init__(self, root, cw) -> None:
+    def __init__(self, root, cw:int=0) -> None:
         self.dll = windll.LoadLibrary(Sync.LIBRARY)
         self.dll.FCWInitObject()
         self.root = root
