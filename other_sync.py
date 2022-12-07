@@ -37,7 +37,7 @@ class Sync:
                 devVersion = self.dll.FCWGetVersion(self.cw, devNum)
 
                 devCnt = None
-                for name, pr in Sync._devCnt:
+                for name, pr in Sync._devCnt.items():
                     if all([pr['devType'] == devType, pr['devVersion'] == devVersion]):
                         devCnt = name
 
