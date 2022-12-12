@@ -12,6 +12,7 @@
                <bd>4</bd>
                <relief>raised</relief>
                <command>all_on</command>
+               <operation>CB1</operation>
                <relx>0.15</relx>
                <rely>0.25</rely>
                <anchor>CENTER</anchor>
@@ -24,6 +25,7 @@
                <bd>4</bd>
                <relief>raised</relief>
                <command>all_off</command>
+               <operation>CB1</operation>
                <relx>0.15</relx>
                <rely>0.35</rely>
                <anchor>CENTER</anchor>
@@ -36,6 +38,7 @@
                <bd>4</bd>
                <relief>raised</relief>
                <command>change_collor</command>
+               <operation>CB1</operation>
                <relx>0.15</relx>
                <rely>0.45</rely>
                <anchor>CENTER</anchor>
@@ -96,6 +99,7 @@
           <CB1>
                <width>10</width>
                <height>5</height>
+               <operation>Input</operation>
                <relx>0.35</relx>
                <rely>0.55</rely>
                <anchor>CENTER</anchor>

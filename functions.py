@@ -67,8 +67,6 @@ def change_checkbutton_position(root, name:str, _type:str) -> None:
 
 
 
-
-
 COMMANDS = {
     'all_on': all_on,
     'all_off': all_off,

@@ -31,7 +31,7 @@ def on_exit(root, dll):
                     case 'img_buttons':
                         data[_object_group][name] = f'{_object[2]}-{_object[1]}'
     save_configurations(path_user=path_user_config, objects=data)
-    #dll.close()
+    dll.close()
     root.destroy()
 
 

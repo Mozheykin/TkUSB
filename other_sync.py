@@ -56,7 +56,7 @@ class Sync:
     def get_list_devices(self):
         self.update_all_devices()
         if self.devices:
-            result = [[params[dev] for dev in ['serNum', 'devType', 'devVersion']] for params in self.devices.values()] 
+            result = [[params[dev] for dev in ['serNum','devCnt','devType', 'devVersion']] for params in self.devices.values()] 
             logger.info(f'get_list_devices() {result}')
             return result
 
@@ -73,17 +73,17 @@ class Sync:
     def split_pin_for_set(self, PIN:str) -> int:
         if '_' in PIN:
             pin_num = int(PIN.split('_')[1])
-            return pin_num
+            return pin_num - 1
         return 0
 
     def set_pin_param(self, serNum, PIN:str=None, value:int=0, PINS:list=[], values:list=[]) -> bool:   
         devNum = self.verify_serNum(serNum)
         logger.info(f'set_pin_param() {devNum}, {PIN}')
-        if all([not devNum is None, PIN]):
+        if all([devNum is not None, PIN]):
             self.dll.FCWSetSwitch(self.cw, devNum, 0x10 + self.split_pin_for_set(PIN), value)
             logger.info(f'change_pin_param() {devNum}, {serNum}, {PIN}, {value}')
             return True
-        elif all([not devNum is None, PINS]):
+        elif all([devNum is not None, PINS]):
             [self.dll.FCWSetSwitch(self.cw, devNum, 0x10 + self.split_pin_for_set(PIN), value) for PIN, value in zip(PINS, values)]
             return True
         return False
@@ -91,7 +91,7 @@ class Sync:
     def get_pin_param(self, serNum, PIN:str=None, PINS:list=[]) -> int | list | None:
         devNum, params =self.verify_serNum(serNum, take_params=True, update=True) # Update devices in 52 line
         logger.info(f'get_pin_param() {devNum}, {params}')
-        if not devNum is None:
+        if devNum is not None:
             if PIN:
                 result = params.get(PIN)
                 logger.info(f'get_pin_param() {devNum}, {serNum}, {result}')
@@ -103,7 +103,7 @@ class Sync:
     
     def set_multi_switch(self, serNum, contact) -> bool:
         devNum = self.verify_serNum(serNum, update=True)
-        if not devNum is None:
+        if devNum is not None:
             value = 2 ** contact - 1
             self.dll.FCWSetMultiSwitch(self.cw, devNum, value)
             logger.info(f'set_multi_swirch() {devNum}, {serNum}, {value}')
@@ -112,7 +112,7 @@ class Sync:
     
     def get_multi_switch(self, serNum:int, mask:int=0, value:int=0, seqNum:int=0) -> int | None:
         devNum = self.verify_serNum(serNum, update=True)
-        if not devNum is None:
+        if devNum is not None:
             # mask, and value is optional values
             result = self.dll.FCWGetMultiSwitch(self.cw, devNum, seqNum)
             # if use mask, values

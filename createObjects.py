@@ -1,4 +1,4 @@
-from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage, StringVar
+from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage
 from tkinter.ttk import Combobox
 from functions import COMMANDS, COLLOR0, COLLOR1, MAIN_COLLOR
 from functools import partial
@@ -68,7 +68,7 @@ class CreateObjects:
             button.pack(pady=5)
             button.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor')])
             
-            buttons_dict[name] = button
+            buttons_dict[name] = [button, gp(pr, 'operation')]
         return(buttons_dict)
     
     def create_label(self, labels:dict) -> dict:
@@ -115,10 +115,11 @@ class CreateObjects:
     
     def create_combobox(self, comboboxs:dict) -> dict:
         combobox_dict = {}
+        self.values = self.dll.get_list_devices()
         for name, pr in comboboxs.items():
-            combobox = Combobox(self.root, textvariable='Select device', values=['test', 'test1'], width=gp(pr, 'width', 10), height=gp(pr, 'height', 5))
+            combobox = Combobox(self.root, textvariable='Select device', values=[servNum[1] for servNum in self.values], width=gp(pr, 'width', 10), height=gp(pr, 'height', 5))
             combobox.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor')])
-            combobox_dict[name] = combobox
+            combobox_dict[name] = [combobox, gp(pr, 'operation')]
         return combobox_dict
 
 
