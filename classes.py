@@ -6,7 +6,7 @@ from other_sync import Sync
 
 class _Button(NamedTuple):
     _object:Button
-    interaction:Combobox
+    interaction:str
     bg:str #=gray
     font:str
     width:int
@@ -21,10 +21,16 @@ class _Button(NamedTuple):
     
 class _ImgButton(NamedTuple):
     _object:Button
-    interaction:Combobox
+    interaction:str
     activate:str
     _type:str
     image:str
+
+class _Combobox(NamedTuple):
+    _object:Combobox
+    values:dict
+    selected_serNum:str | None
+    operation:str
     
 
 class Objects:
