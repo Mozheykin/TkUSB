@@ -1,6 +1,7 @@
 from tkinter import Tk
 from loadConfiguration import load_configurations, save_configurations
-from createObjects import creator, CreateObjects
+from createObjects import creator
+from classes import Objects
 from pprint import pprint
 from errors import NotConfirationsOnFile
 from other_sync import Sync
@@ -14,7 +15,7 @@ path_configs = "configs.xml"
 
 
 def on_exit(root, dll):
-    _objects = CreateObjects.Objects
+    _objects = Objects.objects_on_the_panel
     data = {
         'buttons': {},
         'img_buttons': {},

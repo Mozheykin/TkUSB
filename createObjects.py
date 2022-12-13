@@ -3,6 +3,7 @@ from tkinter.ttk import Combobox
 from functions import COMMANDS, COLLOR0, COLLOR1, MAIN_COLLOR
 from functools import partial
 from classes import Objects, _Button, _ImgButton, _Combobox
+from pprint import pprint
 
 
 anchor = {
@@ -22,7 +23,6 @@ class CreateObjects:
         self.created_objects = {}
 
     def create_objects(self, objects:dict, config_user:dict) -> dict:
-        self.created_objects['DLL'] = self.dll
         for item, value in objects.items():
             match item:
                 case 'buttons':
@@ -114,11 +114,15 @@ class CreateObjects:
     
     def create_combobox(self, comboboxs:dict) -> dict:
         combobox_dict = {}
-        self.created_objects['values'] = self.dll.get_list_devices()
+        self.created_objects['values'] = Objects.dll.get_list_devices()
         for name, pr in comboboxs.items():
-            combobox = Combobox(self.root, textvariable='Select device', values=[servNum[1] for servNum in self.created_objects['values'].values()], width=gp(pr, 'width', 10), height=gp(pr, 'height', 5))
+            if _obj:= self.created_objects.get('values', {0: "None"}) is not None:
+                values = [servNum[1] if servNum else 'None' for servNum in _obj.values()]
+            else:
+                values = ['None']
+            combobox = Combobox(self.root, textvariable='Select device', values=values, width=gp(pr, 'width', 10), height=gp(pr, 'height', 5))
             combobox.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor')])
-            obj_combobox = _Combobox(combobox, self.dll.get_list_devices(), None, gp(pr, 'operation'))
+            obj_combobox = _Combobox(combobox, Objects.dll.get_list_devices(), None, gp(pr, 'operation'))
             combobox_dict[name] = obj_combobox#[combobox, gp(pr, 'operation')]
         return combobox_dict
 
