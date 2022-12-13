@@ -2,7 +2,7 @@ from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage
 from tkinter.ttk import Combobox
 from functions import COMMANDS, COLLOR0, COLLOR1, MAIN_COLLOR
 from functools import partial
-
+from classes import Objects, _Button, _ImgButton, _Combobox
 
 
 anchor = {
@@ -15,11 +15,10 @@ def gp(input_dict:dict, item='', custom='') -> str | int | float: # get parametr
 
 
 class CreateObjects:
-    Objects = {}
 
     def __init__(self, root, dll=None, heigth:int=0, width:int=0) -> None:
         self.root = root
-        self.dll = dll
+        Objects.dll = dll
         self.created_objects = {}
 
     def create_objects(self, objects:dict, config_user:dict) -> dict:
@@ -44,7 +43,7 @@ class CreateObjects:
                         self.created_objects[item] = self.create_picture_button(img_buttons=value)
                 case 'comboboxs':
                     self.created_objects[item] = self.create_combobox(comboboxs=value)
-        CreateObjects.Objects = self.created_objects
+        Objects.objects_on_the_panel = self.created_objects
         return self.created_objects
 
     def get_parametrs_activate(self, config_user:dict, pr:dict, name:str) -> str:
@@ -115,11 +114,12 @@ class CreateObjects:
     
     def create_combobox(self, comboboxs:dict) -> dict:
         combobox_dict = {}
-        self.values = self.dll.get_list_devices()
+        self.created_objects['values'] = self.dll.get_list_devices()
         for name, pr in comboboxs.items():
-            combobox = Combobox(self.root, textvariable='Select device', values=[servNum[1] for servNum in self.values], width=gp(pr, 'width', 10), height=gp(pr, 'height', 5))
+            combobox = Combobox(self.root, textvariable='Select device', values=[servNum[1] for servNum in self.created_objects['values'].values()], width=gp(pr, 'width', 10), height=gp(pr, 'height', 5))
             combobox.place(relx=gp(pr,'relx',0.15), rely=gp(pr,'rely',0.10), anchor=anchor[gp(pr,'anchor')])
-            combobox_dict[name] = [combobox, gp(pr, 'operation')]
+            obj_combobox = _Combobox(combobox, self.dll.get_list_devices(), None, gp(pr, 'operation'))
+            combobox_dict[name] = obj_combobox#[combobox, gp(pr, 'operation')]
         return combobox_dict
 
 

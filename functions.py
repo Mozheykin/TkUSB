@@ -1,7 +1,7 @@
-import createObjects
 from tkinter import PhotoImage, Button 
 from functools import partial
 from loadConfiguration import save_configurations
+from classes import Objects, _Combobox
 
 
 COLLOR0, COLLOR1 = 'red', 'green'
@@ -9,24 +9,35 @@ MAIN_COLLOR = 'gray'
 
 
 def all_on(root, name:str, _type:str):
-    buttons = createObjects.CreateObjects.Objects.get('buttons')
+    buttons = Objects.objects_on_the_panel.get('buttons')
     for button in buttons.values():
         button.config(bg=COLLOR1)
 
 
 def all_off(root, name:str, _type:str):
-    buttons = createObjects.CreateObjects.Objects.get('buttons')
+    buttons = Objects.objects_on_the_panel.get('buttons')
     for button in buttons.values():
         button.config(bg=COLLOR0)
 
 
-def change_collor(root, name:str, _type:str, collor:str=None) -> None:
-    type_object = createObjects.CreateObjects.Objects.get(_type)
+def change_collor(root, name:str, _type:str, operation:str='',collor:str=None) -> None:
+    combobox:_Combobox = Objects.objects_on_the_panel['comboboxs'].get('CB1')
+    # TODO get parametrs with class _Button in parametr interaction
+    select_value = ''
+    serNum = ''
+    if combobox:
+        select_value = combobox._object.get()
+        for value in combobox.values:
+            if value[1] == select_value:
+                serNum = value[0]
+    type_object = Objects.objects_on_the_panel.get(_type)
     _object = type_object.get(name)
     if not collor:
         if _object['bg'] == COLLOR0:
+            Objects.dll.set_pin_param(serNum=serNum,PIN=name,value=1)
             _object.config(bg=COLLOR1)
         else:
+            Objects.dll.set_pin_param(serNum=serNum,PIN=name,value=0)
             _object.config(bg=COLLOR0)
     else:
         _object.config(bg=collor)
@@ -43,7 +54,7 @@ def get_position_object(_object):
 
 
 def change_checkbutton_position(root, name:str, _type:str) -> None:
-    type_object = createObjects.CreateObjects.Objects.get(_type)
+    type_object = Objects.objects_on_the_panel.get(_type)
     _object = type_object.get(name)[0]
     actuall_button = None
     match type_object.get(name)[1]:
@@ -63,7 +74,7 @@ def change_checkbutton_position(root, name:str, _type:str) -> None:
     img_button.image = img
     img_button.pack(pady=5)
     img_button.place(x=x, y=y)
-    createObjects.CreateObjects.Objects[_type][name] = [img_button, actuall_button, type_object.get(name)[2]]
+    Objects.objects_on_the_panel[_type][name] = [img_button, actuall_button, type_object.get(name)[2]]
 
 
 
