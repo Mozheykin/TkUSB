@@ -114,10 +114,10 @@ class CreateObjects:
     
     def create_combobox(self, comboboxs:dict) -> dict:
         combobox_dict = {}
-        self.created_objects['values'] = Objects.dll.get_list_devices()
+        self.created_objects['values'] = Objects.dll.update_all_devices()
         for name, pr in comboboxs.items():
-            if _obj:= self.created_objects.get('values', {0: "None"}) is not None:
-                values = [servNum[1] if servNum else 'None' for servNum in _obj.values()]
+            if _obj:= self.created_objects.get('values') is not None:
+                values = [servNum['devCnt'] for servNum in _obj.values()]
             else:
                 values = ['None']
             combobox = Combobox(self.root, textvariable='Select device', values=values, width=gp(pr, 'width', 10), height=gp(pr, 'height', 5))
