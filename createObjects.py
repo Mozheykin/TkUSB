@@ -116,7 +116,8 @@ class CreateObjects:
         combobox_dict = {}
         self.created_objects['values'] = Objects.dll.update_all_devices()
         for name, pr in comboboxs.items():
-            if _obj:= self.created_objects.get('values') is not None:
+            _obj = self.created_objects.get('values')
+            if  _obj is not None:
                 values = [servNum['devCnt'] for servNum in _obj.values()]
             else:
                 values = ['None']
