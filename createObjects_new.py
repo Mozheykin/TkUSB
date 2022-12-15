@@ -2,7 +2,7 @@ from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage
 from tkinter.ttk import Combobox
 from functions import COMMANDS, COLLOR0, COLLOR1, MAIN_COLLOR
 from functools import partial
-from classes import Objects, _Button, _ImgButton, _Combobox, _Label
+from classes import Objects, _Button, _ImgButton, _Combobox, _Label, _Entry
 from pprint import pprint
 
 
@@ -123,3 +123,31 @@ class CreateObjects:
             label.object_.place(relx=relx, rely=rely, anchor=ANCHOR[anchor])
             labels_dict[name] = label
         return(labels_dict)
+
+    def create_entry(self, entrys:dict, config_user:dict={}) -> dict:
+        entrys_dict =dict()
+        for name, pr in entrys.items():
+            ud = config_user.get('buttons', {}).get(name, {}) # user dict
+            text:str = gp(pr, ud, 'text', '')
+            on_what:str = gp(pr, ud, 'on_what', 'root')
+            weidth:int = int(gp(pr, ud, 'weidth', 10))
+            heigth:int = int(gp(pr, ud, 'heigth', 5))
+            relx:float = float(gp(pr, ud, 'relx', 0.15))
+            rely:float = float(gp(pr, ud, 'rely', 0.10))
+            anchor:str = gp(pr, ud, 'anchor', 'CENTER')
+            entry = _Entry(
+                object_= Entry(self.on_what[on_what], width=weidth),
+                name=name,
+                text=text,
+                on_what=on_what,
+                weidth=weidth,
+                heigth=heigth,
+                relx=relx,
+                rely=rely,
+                anchor=anchor
+                )
+            if text:
+                entry.object_.insert(0, text)
+            entry.object_.place(relx=relx, rely=rely, anchor=ANCHOR[anchor])
+            entrys_dict[name] = entry
+        return(entrys_dict)
