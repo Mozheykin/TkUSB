@@ -1,12 +1,13 @@
 from typing import NamedTuple
-from tkinter import Button
+from tkinter import Button, Label, Entry
 from tkinter.ttk import Combobox
 from other_sync import Sync
 
 
 class _Button(NamedTuple):
     object_:Button
-    interaction:str
+    interaction:str #=None, CB1 ....
+    on_what:str #=root, WD1....
     bg:str #=gray
     font:str
     width:int
@@ -14,17 +15,54 @@ class _Button(NamedTuple):
     relief:str
     name:str # = 'PIN_'
     text_swich:list# = ['STATUS OFF', 'STATUS ON']
-    relx:int
-    rely:int
+    relx:float
+    rely:float
     command:str #= 'change_collor'
-    collors_def:list #= ['red', 'green']
-    
+    collors:list #= ['red', 'green']
+    anchor:str
+
+class _Label(NamedTuple):
+    object_:Label
+    name:str
+    text:str
+    interaction:str #=None, CB1 ....
+    on_what:str #=root, WD1....
+    background:str
+    highlightthickness:int
+    relx:float  
+    rely:float
+    anchor:str
+
+class _Entry(NamedTuple):
+    object_:Entry
+    name:str
+    text:str
+    on_what:str #=root, WD1....
+    weidth:int
+    heigth:int
+    relx:float
+    rely:float
+    anchor:str
+
 class _ImgButton(NamedTuple):
     object_:Button
+    interaction:str #=None, CB1 ....
+    on_what:str #=root, WD1....
+    bd:int
+    name:str # = 'PIN_'
+    relx:float
+    rely:float
+    command:str #= 'change_checkbutton_position'
+    anchor:str
     interaction:str
     activate:str
     type_:str
     image:str
+    images:list #['yes', 'no', 'null']
+    highlightthickness:int #0
+    activebackground:str #gray
+    bg:str #gray
+    subsample:int #6
 
 class _Combobox(NamedTuple):
     object_:Combobox
