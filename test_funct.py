@@ -25,7 +25,7 @@ def on_exit(root, dll):
             for name, _object in _object_pr.items():
                 match _object_group:
                     case 'buttons': 
-                        if _object['bg'] == COLLOR1:
+                        if _object[0]['bg'] == COLLOR1:
                             data[_object_group][name] = '1'
                         else:
                             data[_object_group][name] = '0'

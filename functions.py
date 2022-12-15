@@ -12,13 +12,13 @@ MAIN_COLLOR = 'gray'
 def all_on(root, name:str, _type:str):
     buttons = Objects.objects_on_the_panel.get('buttons')
     for button in buttons.values():
-        button.config(bg=COLLOR1)
+        button[0].config(bg=COLLOR1)
 
 
 def all_off(root, name:str, _type:str):
     buttons = Objects.objects_on_the_panel.get('buttons')
     for button in buttons.values():
-        button.config(bg=COLLOR0)
+        button[0].config(bg=COLLOR0)
 
 
 def change_collor(root, name:str, _type:str, operation:str='',collor:str=None) -> None:
@@ -38,14 +38,14 @@ def change_collor(root, name:str, _type:str, operation:str='',collor:str=None) -
     type_object = Objects.objects_on_the_panel.get(_type)
     _object = type_object.get(name)
     if not collor:
-        if _object['bg'] == COLLOR0:
+        if _object[0]['bg'] == COLLOR0:
             logger.info(f'set_pin_param -> Enable: {Objects.dll.set_pin_param(serNum=serNum,PIN=name,value=1)}')
-            _object.config(bg=COLLOR1)
+            _object[0].config(bg=COLLOR1)
         else:
             logger.info(f'set_pin_param -> Disable: {Objects.dll.set_pin_param(serNum=serNum,PIN=name,value=0)}')
-            _object.config(bg=COLLOR0)
+            _object[0].config(bg=COLLOR0)
     else:
-        _object.config(bg=collor)
+        _object[0].config(bg=collor)
 
 
 def get_picture(name_button:str, change_x:int, change_y:int) -> PhotoImage:
