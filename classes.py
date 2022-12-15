@@ -54,7 +54,6 @@ class _ImgButton(NamedTuple):
     rely:float
     command:str #= 'change_checkbutton_position'
     anchor:str
-    interaction:str
     activate:str
     type_:str
     image:str

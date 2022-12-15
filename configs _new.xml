@@ -80,6 +80,7 @@
           <CHB1>
                <type>check</type>
                <image>yes</image>
+               <active>check-yes</active>
                <images>yes, no, null</images>
                <bd>0</bd>
                <command>change_checkbutton_position</command>

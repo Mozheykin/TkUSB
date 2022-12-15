@@ -46,7 +46,7 @@ class CreateObjects:
     def create_button(self, buttons:dict, config_user:dict={}) -> dict:
         buttons_dict = dict()
         for name, pr in buttons.items(): 
-            ud = config_user.get('buttons', {}).get(name, {}) # user dict
+            ud = config_user.get(name, {}) # user dict
             collors:list = gp(pr, ud, 'collors', 'red, green').split(',')
             interaction:str = gp(pr, ud, 'interaction', 'None')
             on_what:str = gp(pr, ud, 'on_what', 'root')
@@ -94,7 +94,7 @@ class CreateObjects:
     def create_label(self, labels:dict, config_user:dict={}) -> dict:
         labels_dict = dict()
         for name, pr in labels.items():
-            ud = config_user.get('buttons', {}).get(name, {}) # user dict
+            ud = config_user.get(name, {}) # user dict
             text:str = gp(pr, ud, 'text', '')
             interaction:str = gp(pr, ud, 'interaction', 'None')
             on_what:str = gp(pr, ud, 'on_what', 'root')
@@ -127,7 +127,7 @@ class CreateObjects:
     def create_entry(self, entrys:dict, config_user:dict={}) -> dict:
         entrys_dict =dict()
         for name, pr in entrys.items():
-            ud = config_user.get('buttons', {}).get(name, {}) # user dict
+            ud = config_user.get(name, {}) # user dict
             text:str = gp(pr, ud, 'text', '')
             on_what:str = gp(pr, ud, 'on_what', 'root')
             weidth:int = int(gp(pr, ud, 'weidth', 10))
@@ -151,3 +151,57 @@ class CreateObjects:
             entry.object_.place(relx=relx, rely=rely, anchor=ANCHOR[anchor])
             entrys_dict[name] = entry
         return(entrys_dict)
+
+    def create_picture_button(self, img_buttons:dict, config_user:dict={}) -> dict:
+        img_buttons_dict = {}
+        for name, pr in img_buttons.items():
+            ud = config_user.get(name, {}) # user dict
+            interaction:str = gp(pr, ud, 'interaction', 'None')
+            on_what:str  = gp(pr, ud, 'on_what', 'root')
+            bd:int = int(gp(pr, ud, 'bd', 0))
+            relx:float = float(gp(pr, ud, 'relx', 0.15))
+            rely:float = float(gp(pr, ud, 'rely', 0.20))
+            command:str = gp(pr, ud, 'command', 'change_checkbutton_position') 
+            anchor:str = gp(pr, ud, 'anchor', 'CENTER')
+            activate:str = gp(pr, ud, 'activate', 'None')
+            type_:str = gp(pr, ud, 'type', 'check')
+            image:str = gp(pr, ud, 'image', 'yes')
+            images:list = gp(pr, ud, 'images', 'yes,no,null').split(',') 
+            highlightthickness:int = int(gp(pr, ud, 'highlightthickness', 0))
+            activebackground:str = gp(pr, ud, 'activebackground', 'gray')
+            bg:str = gp(pr, ud, 'bg', 'gray') 
+            subsample:int = int(gp(pr, ud, 'subsample', 6))
+            out_button = PhotoImage(file=f'buttons/{activate}.png')
+            out_button = out_button.subsample(subsample, subsample)
+            img_button = _ImgButton(
+                object_=Button(
+                    self.on_what[on_what],
+                    image=out_button,
+                    command=partial(command, self.on_what[on_what], name, 'img_buttons'),
+                    bd=bd,
+                    highlightthickness=highlightthickness,
+                    activebackground=activebackground,
+                    bg=bg
+                ),
+                interaction=interaction,
+                on_what=on_what,
+                bd=bd,
+                name=name,
+                relx=relx,
+                rely=rely,
+                command=command,
+                anchor=anchor,
+                activate=activate,
+                type_=type_,
+                image=image,
+                images=images,
+                highlightthickness=highlightthickness,
+                activebackground=activebackground,
+                bg=bg,
+                subsample=subsample
+            )
+            img_button.object_.image = out_button
+            img_button.object_.pack(pady=5)
+            img_button.object_.place(relx=relx, rely=rely, anchor=ANCHOR[anchor])
+            img_buttons_dict[name] = img_button
+        return(img_buttons_dict)
