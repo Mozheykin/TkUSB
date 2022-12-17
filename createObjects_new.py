@@ -2,7 +2,7 @@ from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage
 from tkinter.ttk import Combobox
 from functions import COMMANDS, COLLOR0, COLLOR1, MAIN_COLLOR
 from functools import partial
-from classes import Objects, _Button, _ImgButton, _Combobox, _Label, _Entry
+from classes import Objects, _Button, _ImgButton, _Combobox, _Label, _Entry, _Checkbutton
 from pprint import pprint
 
 
@@ -205,3 +205,83 @@ class CreateObjects:
             img_button.object_.place(relx=relx, rely=rely, anchor=ANCHOR[anchor])
             img_buttons_dict[name] = img_button
         return(img_buttons_dict)
+
+    def create_checkbutton(self, checkbuttons:dict, config_user:dict={}) -> dict:
+        checkbutton_dict =dict()
+        for name, pr in checkbuttons.items():
+            ud = config_user.get(name, {}) # user dict
+            interaction:str = gp(pr, ud, 'interaction', 'None')
+            on_what:str = gp(pr, ud, 'on_what', 'root')
+            width:int = int(gp(pr, ud, 'width', 10))
+            text:str = gp(pr, ud, 'text', 'None')
+            background:str = gp(pr, ud, 'background', 'gray')
+            relx:float = float(gp(pr, ud, 'relx', 0.15))
+            rely:float = float(gp(pr, ud, 'rely', 0.15))
+            anchor:str = gp(pr, ud, 'anchor', 'CENTER')
+            checkbutton = _Checkbutton(
+                object_=Checkbutton(
+                    self.on_what[on_what],
+                    width=width,
+                    text=text,
+                    background=background
+                ),
+                interaction=interaction,
+                on_what=on_what,
+                name=name,
+                width=width,
+                text=text,
+                background=background,
+                relx=relx,
+                rely=rely,
+                anchor=anchor
+            )
+            checkbutton.object_.place(relx=relx, rely=rely, anchor=ANCHOR[anchor])
+            checkbutton_dict[name] = checkbutton
+        return(checkbutton_dict)
+    
+    def create_combobox(self, comboboxs:dict, config_user:dict={}) -> dict:
+        combobox_dict = {}
+        Objects.devices = Objects.dll.update_all_devices()
+        for name, pr in comboboxs.items():
+            _obj = Objects.devices
+            if  _obj is not None:
+                values = [servNum['devCnt'] for servNum in _obj.values()]
+            else:
+                values = ['None']
+            ud = config_user.get(name, {}) # user dict
+            interaction:str = gp(pr, ud, 'interaction', 'None')
+            on_what:str = gp(pr, ud, 'on_what', 'root')
+            selected_serNum:str | None = gp(pr, ud, 'selected_serNum', None)
+            operation:str = gp(pr, ud, 'operation', 'Input')
+            width:int = int(gp(pr, ud, 'width', 10))
+            height:int = int(gp(pr, ud, 'height', 5))
+            values:list = values
+            textvariable:str = gp(pr, ud, 'textvariable', 'Select device')
+            relx:float = gp(pr, ud, 'relx', 0.20)
+            rely:float = gp(pr, ud, 'rely', 0.15)
+            anchor:str = gp(pr, ud, 'anchor', 'CENTER')
+
+            combobox = _Combobox(
+                object_=Combobox(
+                    self.on_what[on_what],
+                    textvariable=textvariable,
+                    values=values,
+                    width=width,
+                    height=height
+                ),
+                interaction=interaction,
+                on_what=on_what,
+                name=name,
+                selected_serNum=selected_serNum,
+                operation=operation,
+                width=width,
+                height=height,
+                textvariable=textvariable,
+                anchor=anchor,
+                values=values,
+                relx=relx,
+                rely=rely
+            )
+            combobox.object_.place(relx=relx, rely=rely, anchor=ANCHOR[anchor])
+            combobox_dict[name] = combobox#[combobox, gp(pr, 'operation')]
+        return combobox_dict

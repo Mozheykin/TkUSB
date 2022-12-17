@@ -1,5 +1,5 @@
 from typing import NamedTuple
-from tkinter import Button, Label, Entry
+from tkinter import Button, Label, Entry, Checkbutton
 from tkinter.ttk import Combobox
 from other_sync import Sync
 
@@ -63,15 +63,43 @@ class _ImgButton(NamedTuple):
     bg:str #gray
     subsample:int #6
 
+class _Checkbutton(NamedTuple):
+    object_:Checkbutton
+    interaction:str
+    on_what:str
+    name:str
+    width:int
+    text:str
+    background:str
+    relx:float
+    rely:float
+    anchor:str
+
 class _Combobox(NamedTuple):
     object_:Combobox
-    values:dict
+    interaction:str
+    on_what:str
+    name:str
     selected_serNum:str | None
     operation:str
-    
+    width:int
+    height:int
+    textvariable:str
+    anchor:str
+    values:list
+    relx:float
+    rely:float
+
+class _Device(NamedTuple):
+    id_:int
+    devCnt:str
+    serNum:str
+    devType:int
+    devVersion:int
 
 class Objects:
     objects_on_the_panel = {}
     dll:Sync
+    devices:dict
 
 
