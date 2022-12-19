@@ -104,6 +104,8 @@ class _Notebook(NamedTuple):
     width:int
     height:int
     padding:int
+    relx:float
+    rely:float
 
 
 

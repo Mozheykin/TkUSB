@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <TkUSB>
      <title>App load on xml</title>
-     <geometry>450x450</geometry>
+     <geometry>570x300</geometry>
      <main_color>gray</main_color>
      <notebooks>
           <NB1>
@@ -9,12 +9,27 @@
                <on_what>root</on_what>
                <expand>True</expand>
                <fill>BOTH</fill>
-               <frames>USB Switch 4,USB 3.0 Connect,USB Multiplexer 2x4</frames>
-               <names_frames>NB11,NB12,NB13</names_frames>
+               <frames>USB Switch 8,USB Switch 4</frames>
+               <names_frames>NB11,NB12</names_frames>
                <width>200</width>
                <height>250</height>
                <padding>0</padding>
+               <relx>0</relx>
+               <rely>0</rely>
           </NB1>
+          <NB2>
+               <interaction>None</interaction>
+               <on_what>root</on_what>
+               <expand>True</expand>
+               <fill>BOTH</fill>
+               <frames>USB Switch 4,USB 3.0 Connect,USB Multiplexer 2x4</frames>
+               <names_frames>NB21,NB22,NB23</names_frames>
+               <width>200</width>
+               <height>250</height>
+               <padding>0</padding>
+               <relx>0.4</relx>
+               <rely>0</rely>
+          </NB2>
      </notebooks>     
      <buttons>
           <PIN_1>
@@ -51,13 +66,13 @@
           </PIN_2>
           <PIN_3>
                <interaction>CB1</interaction>
-               <on_what>NB13</on_what>
+               <on_what>NB11</on_what>
                <bg>gray</bg>
                <font>Courier 9</font>
                <width>10</width>
                <bd>4</bd>
                <relief></relief>
-               <saved>PIN_1</saved>
+               <saved>PIN_2</saved>
                <text_swich>STATUS OFF,STATUS ON</text_swich>
                <relx>0.15</relx>
                <rely>0.10</rely>
@@ -73,7 +88,7 @@
                <width>10</width>
                <bd>4</bd>
                <relief></relief>
-               <saved>PIN_2</saved>
+               <saved>PIN_3</saved>
                <text_swich>STATUS OFF,STATUS ON</text_swich>
                <relx>0.15</relx>
                <rely>0.20</rely>
