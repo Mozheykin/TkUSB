@@ -10,7 +10,7 @@ def all_on(root, name:str, _type:str) -> None:
     on_what = object_.on_what
     for name, object_ in objects_.items():
         if object_.on_what == on_what:
-            object_._replace(activate = 1)
+            object_ = object_._replace(activate = 1)
             object_.object_['bg'] = object_.collors[1]
             object_.object_['text'] = object_.text_swich[1]
             Objects.objects_on_the_panel[_type][name] = object_
@@ -23,7 +23,7 @@ def all_off(root, name:str, _type:str) -> None:
     on_what = object_.on_what
     for name, object_ in objects_.items():
         if object_.on_what == on_what:
-            object_._replace(activate = 0)
+            object_ = object_._replace(activate = 0)
             object_.object_['bg'] = object_.collors[0]
             object_.object_['text'] = object_.text_swich[0]
             Objects.objects_on_the_panel[_type][name] = object_
@@ -34,10 +34,9 @@ def change_collor(root, name:str, _type:str, collor:str=None) -> None:
     object_ = objects_.get(name)
     state = {0:1, 1:0}
     # TODO set dll
-    activate = state[object_.activate]
-    object_._replace(activate = 1)
-    object_.object_['bg'] = object_.collors[activate]
-    object_.object_['text'] = object_.text_swich[activate]
+    object_ = object_._replace(activate=state[object_.activate])
+    object_.object_['bg'] = object_.collors[object_.activate]
+    object_.object_['text'] = object_.text_swich[object_.activate]
     Objects.objects_on_the_panel[_type][name] = object_
 
 
@@ -46,14 +45,15 @@ def change_checkbutton_position(root, name:str, _type:str) -> None:
     object_ = objects_.get(name)
     state = {0:1,1:2,2:0}
     act = state[object_.act]
-    object_._replace(act=act)
+    object_ = object_._replace(act=act)
     images = object_.images
     activate=f'{object_.type_}-{images[act]}'
-    object_._replace(activate=activate)
+    object_ = object_._replace(activate=activate)
     img_button = get_picture(object_.activate, object_.subsample, object_.subsample)
+    x, y = get_position_object(object_.object_)
     object_.object_.destroy()
-    object_._replace(object_ = Button(
-        Objects.objects_on_the_panel['notebooks'].get(object_.on_what),
+    object_ = object_._replace(object_ = Button(
+        root,
         image=img_button,
         command=partial(COMMANDS[object_.command], root, name, 'img_buttons'),
         bd=object_.bd,
@@ -71,6 +71,9 @@ def get_picture(name_button:str, change_x:int, change_y:int) -> PhotoImage:
     img = PhotoImage(file=f'buttons/{name_button}.png')
     img = img.subsample(change_x, change_y)
     return img
+
+def get_position_object(_object):
+    return _object.winfo_x(), _object.winfo_y()
 
 COMMANDS = {
     'all_on': all_on,
