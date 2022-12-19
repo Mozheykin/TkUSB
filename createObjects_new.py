@@ -1,5 +1,5 @@
-from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage, BOTH
-from tkinter.ttk import Combobox, Notebook, Frame
+from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage, BOTH, Frame
+from tkinter.ttk import Combobox, Notebook 
 from functions_new import COMMANDS
 from functools import partial
 from classes import Objects, _Button, _ImgButton, _Combobox, _Label, _Entry, _Checkbutton, _Notebook
@@ -323,7 +323,7 @@ class CreateObjects:
             main_object.pack(fill=FILL[fill], expand=expand)
             #main_object.place(relx=relx, rely=rely)
             main_object.place(x=x, y=y)
-            sub_objects = {name:{'frame':Frame(main_object), 'text':text} for name, text in zip(names_frames, frames)}
+            sub_objects = {name:{'frame':Frame(main_object, bg='gray'), 'text':text} for name, text in zip(names_frames, frames)}
 
             for name, frame in sub_objects.items():
                 frame['frame'].pack(fill=FILL[fill], expand=expand)
