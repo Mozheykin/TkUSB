@@ -1,6 +1,6 @@
 from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage, BOTH
 from tkinter.ttk import Combobox, Notebook, Frame
-from functions import COMMANDS, COLLOR0, COLLOR1, MAIN_COLLOR
+from functions_new import COMMANDS
 from functools import partial
 from classes import Objects, _Button, _ImgButton, _Combobox, _Label, _Entry, _Checkbutton, _Notebook
 from pprint import pprint
@@ -29,22 +29,25 @@ class CreateObjects:
         self.on_what = {
             'root': self.root,
         }
+        self.created_objects = {}
 
     def create_objects(self, objects:dict, config_user:dict) -> None:
         for item, value in objects.items():
             match item:
                 case 'buttons':
-                    self.created_objects[item] = self.create_button(buttons=value, config_user=config_user.get(item))
+                    self.created_objects[item] = self.create_button(buttons=value, config_user=config_user.get(item, {}))
                 case 'labels':
-                    self.created_objects[item] = self.create_label(labels=value, config_user=config_user.get(item))
+                    self.created_objects[item] = self.create_label(labels=value, config_user=config_user.get(item, {}))
                 case 'entrys':
-                    self.created_objects[item] = self.create_entry(entrys=value, config_user=config_user.get(item))
+                    self.created_objects[item] = self.create_entry(entrys=value, config_user=config_user.get(item, {}))
                 case 'checkbuttons':
-                    self.created_objects[item] = self.create_checkbutton(checkbuttons=value, config_user=config_user.get(item))
+                    self.created_objects[item] = self.create_checkbutton(checkbuttons=value, config_user=config_user.get(item, {}))
                 case 'img_buttons':
-                    self.created_objects[item] = self.create_picture_button(img_buttons=value, config_user=config_user.get(item))
+                    self.created_objects[item] = self.create_picture_button(img_buttons=value, config_user=config_user.get(item, {}))
                 case 'comboboxs':
-                    self.created_objects[item] = self.create_combobox(comboboxs=value, config_user=config_user.get(item))
+                    self.created_objects[item] = self.create_combobox(comboboxs=value, config_user=config_user.get(item, {}))
+                case 'notebooks':
+                    self.created_objects[item] = self.create_notebook(notebooks=value, config_user=config_user.get(item, {}))
         Objects.objects_on_the_panel = self.created_objects
 
     def create_button(self, buttons:dict, config_user:dict={}) -> dict:
@@ -169,7 +172,7 @@ class CreateObjects:
             rely:float = float(gp(pr, ud, 'rely', 0.20))
             command:str = gp(pr, ud, 'command', 'change_checkbutton_position') 
             anchor:str = gp(pr, ud, 'anchor', 'CENTER')
-            activate:str = gp(pr, ud, 'activate', 'None')
+            activate:str = gp(pr, ud, 'activate', 'check-yes')
             type_:str = gp(pr, ud, 'type', 'check')
             image:str = gp(pr, ud, 'image', 'yes')
             images:list = gp(pr, ud, 'images', 'yes,no,null').split(',') 
@@ -183,7 +186,7 @@ class CreateObjects:
                 object_=Button(
                     self.on_what[on_what],
                     image=out_button,
-                    command=partial(command, self.on_what[on_what], name, 'img_buttons'),
+                    command=partial(COMMANDS[command], self.on_what[on_what], name, 'img_buttons'),
                     bd=bd,
                     highlightthickness=highlightthickness,
                     activebackground=activebackground,
@@ -247,9 +250,9 @@ class CreateObjects:
     
     def create_combobox(self, comboboxs:dict, config_user:dict={}) -> dict:
         combobox_dict = {}
-        Objects.devices = Objects.dll.update_all_devices()
+        # TODO back Objects.devices = Objects.dll.update_all_devices()
         for name, pr in comboboxs.items():
-            _obj = Objects.devices
+            _obj = None # TODO back _obj = Objects.devices
             if  _obj is not None:
                 values = [servNum['devCnt'] for servNum in _obj.values()]
             else:
@@ -316,9 +319,10 @@ class CreateObjects:
             main_object.pack(fill=FILL[fill], expand=expand)
             sub_objects = {name:{'frame':Frame(main_object), 'text':text} for name, text in zip(names_frames, frames)}
 
-            for frame in sub_objects.values():
-                frame['farme'].pack(fill=FILL[fill], expand=expand)
-                main_object.add(frame, text=frame['text'])
+            for name, frame in sub_objects.items():
+                frame['frame'].pack(fill=FILL[fill], expand=expand)
+                main_object.add(frame['frame'], text=frame['text'])
+                self.on_what[name] = frame['frame']
 
             notebook = _Notebook(
                 object_=main_object,
