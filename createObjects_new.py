@@ -311,6 +311,8 @@ class CreateObjects:
             padding:int = int(gp(pr, ud, 'padding', 0))
             relx:float = float(gp(pr, ud, 'relx', 0.1))
             rely:float = float(gp(pr, ud, 'rely', 0.1))
+            x:int = int(gp(pr, ud, 'x', 0))
+            y:int = int(gp(pr, ud, 'y', 0))
 
             main_object = Notebook(
                 self.on_what[on_what],
@@ -319,7 +321,8 @@ class CreateObjects:
                 padding=padding
                 )
             main_object.pack(fill=FILL[fill], expand=expand)
-            main_object.place(relx=relx, rely=rely)
+            #main_object.place(relx=relx, rely=rely)
+            main_object.place(x=x, y=y)
             sub_objects = {name:{'frame':Frame(main_object), 'text':text} for name, text in zip(names_frames, frames)}
 
             for name, frame in sub_objects.items():
@@ -341,7 +344,9 @@ class CreateObjects:
                 height=height,
                 padding=padding,
                 relx=relx,
-                rely=rely
+                rely=rely,
+                x=x,
+                y=y
             )
             notebook_dict[name] = notebook
         return notebook_dict

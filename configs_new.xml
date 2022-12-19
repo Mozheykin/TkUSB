@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <TkUSB>
      <title>App load on xml</title>
-     <geometry>570x300</geometry>
+     <geometry>720x375</geometry>
      <main_color>gray</main_color>
      <notebooks>
           <NB1>
@@ -11,11 +11,13 @@
                <fill>BOTH</fill>
                <frames>USB Switch 8,USB Switch 4</frames>
                <names_frames>NB11,NB12</names_frames>
-               <width>200</width>
-               <height>250</height>
+               <width>350</width>
+               <height>350</height>
                <padding>0</padding>
                <relx>0</relx>
                <rely>0</rely>
+               <x>0</x>
+               <y>0</y>
           </NB1>
           <NB2>
                <interaction>None</interaction>
@@ -25,10 +27,12 @@
                <frames>USB Switch 4,USB 3.0 Connect,USB Multiplexer 2x4</frames>
                <names_frames>NB21,NB22,NB23</names_frames>
                <width>200</width>
-               <height>250</height>
+               <height>350</height>
                <padding>0</padding>
                <relx>0.4</relx>
                <rely>0</rely>
+               <x>355</x>
+               <y>0</y>
           </NB2>
      </notebooks>     
      <buttons>
@@ -42,8 +46,8 @@
                <relief></relief>
                <saved>PIN_1</saved>
                <text_swich>STATUS OFF,STATUS ON</text_swich>
-               <relx>0.15</relx>
-               <rely>0.10</rely>
+               <relx>0.35</relx>
+               <rely>0.15</rely>
                <command>change_collor</command>
                <collors>red,green</collors>
                <anchor>CENTER</anchor>
@@ -58,8 +62,8 @@
                <relief></relief>
                <saved>PIN_1</saved>
                <text_swich>STATUS OFF,STATUS ON</text_swich>
-               <relx>0.15</relx>
-               <rely>0.10</rely>
+               <relx>0.35</relx>
+               <rely>0.15</rely>
                <command>change_collor</command>
                <collors>red,green</collors>
                <anchor>CENTER</anchor>
@@ -74,8 +78,8 @@
                <relief></relief>
                <saved>PIN_2</saved>
                <text_swich>STATUS OFF,STATUS ON</text_swich>
-               <relx>0.15</relx>
-               <rely>0.10</rely>
+               <relx>0.35</relx>
+               <rely>0.25</rely>
                <command>change_collor</command>
                <collors>red,green</collors>
                <anchor>CENTER</anchor>
@@ -90,11 +94,139 @@
                <relief></relief>
                <saved>PIN_3</saved>
                <text_swich>STATUS OFF,STATUS ON</text_swich>
-               <relx>0.15</relx>
-               <rely>0.20</rely>
+               <relx>0.35</relx>
+               <rely>0.35</rely>
                <command>change_collor</command>
                <collors>red,green</collors>
                <anchor>CENTER</anchor>
           </PIN_4>
+          <PIN_5>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_4</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.45</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_5>
+          <PIN_6>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_5</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.55</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_6>
+          <PIN_7>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_6</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.65</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_7>
+          <PIN_8>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_7</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.75</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_8>
+          <PIN_9>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_8</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.85</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_9>
+          <PIN_10>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_2</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.25</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_10>
+          <PIN_11>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_3</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.35</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_11>
+          <PIN_12>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_4</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.45</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_12>
      </buttons>
 </TkUSB>
