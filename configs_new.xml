@@ -45,10 +45,10 @@
                <bd>4</bd>
                <relief></relief>
                <saved>PIN_1</saved>
-               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <text_swich>ALL OFF,ALL OFF</text_swich>
                <relx>0.35</relx>
                <rely>0.15</rely>
-               <command>change_collor</command>
+               <command>all_off</command>
                <collors>red,green</collors>
                <anchor>CENTER</anchor>
           </PIN_1>
@@ -77,10 +77,10 @@
                <bd>4</bd>
                <relief></relief>
                <saved>PIN_2</saved>
-               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <text_swich>ALL ON,ALL ON</text_swich>
                <relx>0.35</relx>
                <rely>0.25</rely>
-               <command>change_collor</command>
+               <command>all_on</command>
                <collors>red,green</collors>
                <anchor>CENTER</anchor>
           </PIN_3>

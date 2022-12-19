@@ -21,6 +21,7 @@ class _Button(NamedTuple):
     command:str #= 'change_collor'
     collors:list #= ['red', 'green']
     anchor:str
+    activate:int
 
 class _Label(NamedTuple):
     object_:Label
@@ -63,6 +64,7 @@ class _ImgButton(NamedTuple):
     activebackground:str #gray
     bg:str #gray
     subsample:int #6
+    act:int
 
 class _Checkbutton(NamedTuple):
     object_:Checkbutton

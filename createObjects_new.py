@@ -68,11 +68,12 @@ class CreateObjects:
             rely:float = float(gp(pr, ud, 'rely', 0.25))
             command:str = gp(pr, ud, 'command', 'change_collor') 
             anchor:str = gp(pr, ud, 'anchor', 'CENTER')
+            activate:int = int(gp(pr, ud, 'activate', 0))
             button = _Button(
                 object_=Button(
                     self.on_what[on_what],
-                    bg=bg,
-                    text=text_swich[0],
+                    bg=collors[activate],
+                    text=text_swich[activate],
                     font=font,
                     width=width,
                     bd=bd,
@@ -93,7 +94,8 @@ class CreateObjects:
                 rely=rely,
                 command=command,
                 collors=collors,
-                anchor=anchor
+                anchor=anchor,
+                activate=activate
             )
             button.object_.pack(pady=5)
             button.object_.place(relx=relx, rely=rely, anchor=ANCHOR[anchor])
@@ -180,6 +182,7 @@ class CreateObjects:
             activebackground:str = gp(pr, ud, 'activebackground', 'gray')
             bg:str = gp(pr, ud, 'bg', 'gray') 
             subsample:int = int(gp(pr, ud, 'subsample', 6))
+            act:int = int(gp(pr, ud, 'act', 0))
             out_button = PhotoImage(file=f'buttons/{activate}.png')
             out_button = out_button.subsample(subsample, subsample)
             img_button = _ImgButton(
@@ -207,7 +210,8 @@ class CreateObjects:
                 highlightthickness=highlightthickness,
                 activebackground=activebackground,
                 bg=bg,
-                subsample=subsample
+                subsample=subsample,
+                act=act
             )
             img_button.object_.image = out_button
             img_button.object_.pack(pady=5)
