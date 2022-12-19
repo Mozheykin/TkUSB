@@ -1,6 +1,6 @@
 from typing import NamedTuple
 from tkinter import Button, Label, Entry, Checkbutton
-from tkinter.ttk import Combobox
+from tkinter.ttk import Combobox, Notebook
 from other_sync import Sync
 
 
@@ -14,6 +14,7 @@ class _Button(NamedTuple):
     bd:int
     relief:str
     name:str # = 'PIN_'
+    saved:str # = 'else PIN_name'
     text_swich:list# = ['STATUS OFF', 'STATUS ON']
     relx:float
     rely:float
@@ -89,6 +90,22 @@ class _Combobox(NamedTuple):
     values:list
     relx:float
     rely:float
+
+class _Notebook(NamedTuple):
+    object_:Notebook
+    frames_objects_:dict
+    interaction:str
+    on_what:str
+    name:str # = 'NB1'
+    expand:bool # = true
+    fill:str # = BOTH
+    frames:list # = ['List1', 'List2', 'List3']
+    names_frames:list # =['L1', 'L2', 'L3']
+    width:int
+    height:int
+    padding:int
+
+
 
 class _Device(NamedTuple):
     id_:int

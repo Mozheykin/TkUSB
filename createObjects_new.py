@@ -1,13 +1,17 @@
-from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage
-from tkinter.ttk import Combobox
+from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage, BOTH
+from tkinter.ttk import Combobox, Notebook, Frame
 from functions import COMMANDS, COLLOR0, COLLOR1, MAIN_COLLOR
 from functools import partial
-from classes import Objects, _Button, _ImgButton, _Combobox, _Label, _Entry, _Checkbutton
+from classes import Objects, _Button, _ImgButton, _Combobox, _Label, _Entry, _Checkbutton, _Notebook
 from pprint import pprint
 
 
 ANCHOR = {
     'CENTER': CENTER,
+}
+
+FILL = {
+    'BOTH': BOTH,
 }
 
 
@@ -55,6 +59,7 @@ class CreateObjects:
             width:int = int(gp(pr, ud, 'width', 10))
             bd:int = int(gp(pr, ud, 'bd', 4))
             relief:str = gp(pr, ud, 'relief', 'raised')
+            saved:str = gp(pr, ud, 'saved', 'Name')
             text_swich:list = gp(pr, ud, 'text_swich', 'STATUS OFF,STATUS ON').split(',')
             relx:float = float(gp(pr, ud, 'relx', 0.15))
             rely:float = float(gp(pr, ud, 'rely', 0.25))
@@ -79,6 +84,7 @@ class CreateObjects:
                 bd=bd,
                 relief=relief,
                 name=name,
+                saved=saved,
                 text_swich=text_swich,
                 relx=relx,
                 rely=rely,
@@ -285,3 +291,48 @@ class CreateObjects:
             combobox.object_.place(relx=relx, rely=rely, anchor=ANCHOR[anchor])
             combobox_dict[name] = combobox#[combobox, gp(pr, 'operation')]
         return combobox_dict
+
+
+    def create_notebook(self, notebooks:dict, config_user:dict={}) -> dict:
+        notebook_dict = {}
+        for name, pr in notebooks.items():
+            ud = config_user.get(name, {})
+            on_what = gp(pr, ud, 'on_what', 'root')
+            interaction:str = gp(pr, ud, 'interaction', 'None')
+            expand:bool = bool(gp(pr, ud, 'expand', True))
+            fill:str = gp(pr, ud, 'fill', 'BOTH')
+            frames:list = gp(pr, ud, 'frames', 'List1,List2,List3').split(',')
+            names_frames:list = gp(pr, ud, 'names_frames', 'L1,L2,L3').split(',')
+            width:int = int(gp(pr, ud, 'width', 20))
+            height:int = int(gp(pr, ud, 'height', 10))
+            padding:int = int(gp(pr, ud, 'padding', 0))
+
+            main_object = Notebook(
+                self.on_what[on_what],
+                width=width,
+                height=height,
+                padding=padding
+                )
+            main_object.pack(fill=FILL[fill], expand=expand)
+            sub_objects = {name:{'frame':Frame(main_object), 'text':text} for name, text in zip(names_frames, frames)}
+
+            for frame in sub_objects.values():
+                frame['farme'].pack(fill=FILL[fill], expand=expand)
+                main_object.add(frame, text=frame['text'])
+
+            notebook = _Notebook(
+                object_=main_object,
+                frames_objects_=sub_objects,
+                interaction=interaction,
+                on_what=on_what,
+                name=name,
+                expand=expand,
+                fill=fill,
+                frames=frames,
+                names_frames=names_frames,
+                width=width,
+                height=height,
+                padding=padding
+            )
+            notebook_dict[name] = notebook
+        return notebook_dict
