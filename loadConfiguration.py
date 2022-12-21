@@ -69,6 +69,6 @@ def load_configurations(path_user:str, path_configs:str) -> None | dict:
     return config.load()
 
 
-def save_configurations(path_user:str, objects:dict) -> None:
-    config = get_init_class(path=path_user)(path_user=path_user)
+def save_configurations(path:str, path_user:str, objects:dict) -> None:
+    config = get_init_class(path=path)(path_user=path_user)
     config.save(objects=objects)

@@ -1,6 +1,7 @@
 from classes import Objects
 from tkinter import PhotoImage, Button, CENTER
 from functools import partial
+from pprint import pprint
 
 
 def all_on(root, name:str, _type:str) -> None:

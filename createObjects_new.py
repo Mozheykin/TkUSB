@@ -17,7 +17,7 @@ FILL = {
 
 def gp(input_dict:dict, user_dict:dict, item='', custom='') -> str | int | float | list: # get parametrs on dict
     if user_dict.get(item) is not None:
-        return user_dict(item)
+        return user_dict.get(item)
     else:
         return input_dict.get(item, custom)
 
