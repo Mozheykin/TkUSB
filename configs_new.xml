@@ -35,6 +35,21 @@
                <y>0</y>
           </NB2>
      </notebooks>     
+     <comboboxs>
+          <CB1>
+               <interaction>None</interaction>
+               <on_what>NB21</on_what>
+               <selected_serNum>None</selected_serNum>
+               <operation>None</operation>
+               <width>10</width>
+               <height>10</height>
+               <textvariable>Select device</textvariable>
+               <anchor>CENTER</anchor>
+               <values>Device1,Device2,Device3</values>
+               <relx>0.25</relx>
+               <rely>0.15</rely>
+          </CB1>
+     </comboboxs>
      <buttons>
           <PIN_1>
                <interaction>CB1</interaction>
@@ -366,5 +381,73 @@
                <bg>gray</bg>
                <subsample>10</subsample>
           </IMG_8>
+          <IMG_9>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.15</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_9>
+          <IMG_10>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.25</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_10>
+          <IMG_11>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.35</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_11>
+          <IMG_12>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.45</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_12>
      </img_buttons>
 </TkUSB>
