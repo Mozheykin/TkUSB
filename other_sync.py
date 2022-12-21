@@ -20,10 +20,9 @@ class Sync:
         }
     }
 
-    def __init__(self, root, cw:int=0) -> None:
+    def __init__(self, cw:int=0) -> None:
         self.dll = windll.LoadLibrary(Sync.LIBRARY)
         self.dll.FCWInitObject()
-        self.root = root
         self.cw = cw
         logger.add('devices.log', format='{time} {level} {message}', level='INFO')
         
@@ -127,7 +126,7 @@ class Sync:
 def test():
     try:
         # Add cw parametr 
-        sync = Sync(root=None, cw=0)
+        sync = Sync(cw=0)
         _device_for_selected = sync.update_all_devices()  # get all devices in dict
         sync.get_list_devices()  # get list device for combobox
         # first device get PIN1 and two PIN3, PIN4 for 0 device

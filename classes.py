@@ -1,7 +1,7 @@
 from typing import NamedTuple
 from tkinter import Button, Label, Entry, Checkbutton
 from tkinter.ttk import Combobox, Notebook
-#from other_sync import Sync
+from other_sync import Sync
 
 
 class _Button(NamedTuple):
@@ -122,7 +122,7 @@ class _Device(NamedTuple):
 
 class Objects:
     objects_on_the_panel = {}
-    #dll:Sync
+    dll:Sync
     devices:dict
 
 

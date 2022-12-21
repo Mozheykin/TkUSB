@@ -254,11 +254,11 @@ class CreateObjects:
     
     def create_combobox(self, comboboxs:dict, config_user:dict={}) -> dict:
         combobox_dict = {}
-        # TODO back Objects.devices = Objects.dll.update_all_devices()
+        Objects.devices = Objects.dll.update_all_devices()
         for name, pr in comboboxs.items():
-            _obj = None # TODO back _obj = Objects.devices
+            _obj = Objects.devices
             if  _obj is not None:
-                values = [servNum['devCnt'] for servNum in _obj.values()]
+                values = [f"{ind}:{value['serNum']}:{value['devType']}:{value['devCnt']}" for ind, value in _obj.items()]
             else:
                 values = ['None']
             ud = config_user.get(name, {}) # user dict

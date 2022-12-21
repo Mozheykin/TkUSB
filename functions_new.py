@@ -34,10 +34,23 @@ def change_collor(root, name:str, _type:str, collor:str=None) -> None:
     objects_ = Objects.objects_on_the_panel.get(_type)
     object_ = objects_.get(name)
     state = {0:1, 1:0}
-    # TODO set dll
     object_ = object_._replace(activate=state[object_.activate])
     object_.object_['bg'] = object_.collors[object_.activate]
     object_.object_['text'] = object_.text_swich[object_.activate]
+    # TODO set dll
+    interaction = Objects.objects_on_the_panel['comboboxs'].get(object_.interaction)
+    if interaction:
+        select_value = interaction.object_.get()
+        ind, serNum, devType, devCnt = select_value.split(':')
+        pin_val = Objects.dll.get_pin_param(serNum=serNum, PIN=object_.saved)
+        if pin_val != object_.activate:
+            Objects.dll.set_pin_param(serNum=serNum, PIN=objects_.saved, value=object_.activate)
+    for any_name, any_object_ in objects_.item():
+        if object_.saved == any_object_.saved:
+            any_object_ = any_object_._replace(activate = object_.activate)
+            any_object_.object_['bg'] = object_.collors[object_.activate]
+            any_object_.object_['text'] = object_.text_swich[object_.activate]
+            Objects.objects_on_the_panel[_type][any_name] = any_object_
     Objects.objects_on_the_panel[_type][name] = object_
 
 

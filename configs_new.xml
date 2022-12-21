@@ -41,12 +41,12 @@
                <on_what>NB21</on_what>
                <selected_serNum>None</selected_serNum>
                <operation>None</operation>
-               <width>10</width>
+               <width>25</width>
                <height>10</height>
                <textvariable>Select device</textvariable>
                <anchor>CENTER</anchor>
                <values>Device1,Device2,Device3</values>
-               <relx>0.25</relx>
+               <relx>0.35</relx>
                <rely>0.15</rely>
           </CB1>
      </comboboxs>
