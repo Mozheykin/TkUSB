@@ -7,7 +7,6 @@ from pprint import pprint
 def all_on(root, name:str, _type:str) -> None:
     objects_ = Objects.objects_on_the_panel.get(_type)
     object_ = objects_.get(name)
-    # TODO set dll parametrs
     on_what = object_.on_what
     for name, object_ in objects_.items():
         if object_.on_what == on_what:
@@ -20,7 +19,6 @@ def all_on(root, name:str, _type:str) -> None:
 def all_off(root, name:str, _type:str) -> None:
     objects_ = Objects.objects_on_the_panel.get(_type)
     object_ = objects_.get(name)
-    # TODO set dll parametrs
     on_what = object_.on_what
     for name, object_ in objects_.items():
         if object_.on_what == on_what:
@@ -37,7 +35,6 @@ def change_collor(root, name:str, _type:str, collor:str=None) -> None:
     object_ = object_._replace(activate=state[object_.activate])
     object_.object_['bg'] = object_.collors[object_.activate]
     object_.object_['text'] = object_.text_swich[object_.activate]
-    # TODO set dll
     interaction = Objects.objects_on_the_panel['comboboxs'].get(object_.interaction)
     if interaction:
         select_value = interaction.object_.get()

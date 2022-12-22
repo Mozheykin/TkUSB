@@ -120,8 +120,8 @@ class _Device(NamedTuple):
     devType:int
     devVersion:int
 
-class Objects:
-    objects_on_the_panel = {}
+class Objects(NamedTuple):
+    objects_on_the_panel:dict
     dll:Sync
     devices:dict
 
