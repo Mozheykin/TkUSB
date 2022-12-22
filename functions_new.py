@@ -43,7 +43,7 @@ def change_collor(root, name:str, _type:str, collor:str=None) -> None:
             pin_val = Objects.dll.get_pin_param(serNum=serNum, PIN=object_.saved)
             if pin_val != object_.activate:
                 Objects.dll.set_pin_param(serNum=serNum, PIN=objects_.saved, value=object_.activate)
-    for any_name, any_object_ in objects_.item():
+    for any_name, any_object_ in objects_.items():
         if object_.saved == any_object_.saved:
             any_object_ = any_object_._replace(activate = object_.activate)
             any_object_.object_['bg'] = object_.collors[object_.activate]
