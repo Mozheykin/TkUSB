@@ -255,7 +255,6 @@ class CreateObjects:
     def create_combobox(self, comboboxs:dict, config_user:dict={}) -> dict:
         combobox_dict = {}
         Objects.devices = Objects.dll.update_all_devices()
-        print(Objects.devices)
         for name, pr in comboboxs.items():
             _obj = Objects.devices
             if  _obj is not None:
