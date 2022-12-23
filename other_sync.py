@@ -24,7 +24,7 @@ class Sync:
     def __init__(self, path_devices:str='') -> None:
         self.dll = windll.LoadLibrary(Sync.LIBRARY)
         self.dll.FCWInitObject()
-        self._devCnt, _ = load_configurations(path_configs=path_devices, path_user='o.xml')
+        self._devCnt, _ = load_configurations(path_configs=path_devices, path_user=path_devices)
         logger.add('devices.log', format='{time} {level} {message}', level='INFO')
         
     def update_all_devices(self, cw:int=0) -> dict:
