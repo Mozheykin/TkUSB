@@ -1,5 +1,7 @@
 from ctypes import windll
 from loguru import logger
+from loadConfiguration import load_configurations
+import test_funct
 
 
 class Sync:
@@ -20,10 +22,11 @@ class Sync:
         }
     }
 
-    def __init__(self, cw:int=0) -> None:
+    def __init__(self, cw:int=0, path_devices:str='') -> None:
         self.dll = windll.LoadLibrary(Sync.LIBRARY)
         self.dll.FCWInitObject()
         self.cw = cw
+        self._devCnt, _ = load_configurations(path_configs=test_funct.dev_path, path_user='o.xml')
         logger.add('devices.log', format='{time} {level} {message}', level='INFO')
         
     def update_all_devices(self) -> dict:
