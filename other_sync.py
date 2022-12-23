@@ -1,5 +1,6 @@
 from ctypes import windll
 from loguru import logger
+from loadConfiguration import load_configurations
 
 
 class Sync:
@@ -20,25 +21,26 @@ class Sync:
         }
     }
 
-    def __init__(self, cw:int=0) -> None:
+    def __init__(self, path_devices:str='') -> None:
         self.dll = windll.LoadLibrary(Sync.LIBRARY)
         self.dll.FCWInitObject()
-        self.cw = cw
+        self._devCnt, _ = load_configurations(path_configs=path_devices, path_user=path_devices)
         logger.add('devices.log', format='{time} {level} {message}', level='INFO')
         
-    def update_all_devices(self) -> dict:
-        self.devCnt = self.dll.FCWOpenCleware(self.cw)
+    def update_all_devices(self, cw:int=0) -> dict:
+        self.devCnt = self.dll.FCWOpenCleware(cw)
         self.devices = {}
         if self.devCnt:
             for devNum in range(self.devCnt):
-                serNum = self.dll.FCWGetSerialNumber(self.cw, devNum)
-                devType = self.dll.FCWGetUSBType(self.cw, devNum)
-                devVersion = self.dll.FCWGetVersion(self.cw, devNum)
+                serNum = self.dll.FCWGetSerialNumber(cw, devNum)
+                devType = self.dll.FCWGetUSBType(cw, devNum)
+                devVersion = self.dll.FCWGetVersion(cw, devNum)
 
                 devCnt = None
-                for name, pr in Sync._devCnt.items():
-                    if all([pr['devType'] == devType, pr['devVersion'] == devVersion]):
-                        devCnt = name
+                if self._devCnt:
+                    for name, pr in self._devCnt['Dvices'].items():
+                        if all([pr['devType'] == devType, pr['minVersion'] < devVersion, pr['maxVersion'] > devVersion]):
+                            devCnt = name
 
                 self.devices[devNum] = {
                     'devCnt': devCnt,
@@ -48,20 +50,20 @@ class Sync:
                     }
                 
                 for pin in range(0, 8):
-                    self.devices[devNum][f'PIN_{pin + 1}'] = self.dll.FCWGetSwitch(self.cw, devNum, 0x10 + pin)
+                    self.devices[devNum][f'PIN_{pin + 1}'] = self.dll.FCWGetSwitch(cw, devNum, 0x10 + pin)
         logger.info(f'self.devices = {self.devices}')
         return self.devices
 
-    def get_list_devices(self):
-        self.update_all_devices()
+    def get_list_devices(self, cw:int=0):
+        self.update_all_devices(cw=cw)
         if self.devices:
             result = [[params[dev] for dev in ['serNum','devCnt','devType', 'devVersion']] for params in self.devices.values()] 
             logger.info(f'get_list_devices() {result}')
             return result
 
-    def verify_serNum(self, serNum, take_params:bool=False, update:bool=False) -> int | dict | None:
+    def verify_serNum(self, serNum, take_params:bool=False, cw:int=0, update:bool=False) -> int | dict | None:
         if update:
-            self.update_all_devices()
+            self.update_all_devices(cw=cw)
         for devNum, params in self.devices.items():
             if params['serNum'] == serNum:
                 if take_params:
@@ -75,20 +77,21 @@ class Sync:
             return pin_num - 1
         return 0
 
-    def set_pin_param(self, serNum, PIN:str=None, value:int=0, PINS:list=[], values:list=[]) -> bool:   
+    def set_pin_param(self, serNum, PIN:str=None, cw:int=0, value:int=0, PINS:list=[], values:list=[]) -> bool:   
         devNum = self.verify_serNum(serNum)
         logger.info(f'set_pin_param() {devNum}, {PIN}')
         if all([devNum is not None, PIN]):
-            self.dll.FCWSetSwitch(self.cw, devNum, 0x10 + self.split_pin_for_set(PIN), value)
+            self.dll.FCWSetSwitch(cw, devNum, 0x10 + self.split_pin_for_set(PIN), value)
             logger.info(f'change_pin_param() {devNum}, {serNum}, {PIN}, {value}')
             return True
         elif all([devNum is not None, PINS]):
-            [self.dll.FCWSetSwitch(self.cw, devNum, 0x10 + self.split_pin_for_set(PIN), value) for PIN, value in zip(PINS, values)]
+            [self.dll.FCWSetSwitch(cw, devNum, 0x10 + self.split_pin_for_set(PIN), value) for PIN, value in zip(PINS, values)]
             return True
         return False
     
-    def get_pin_param(self, serNum, PIN:str=None, PINS:list=[]) -> int | list | None:
-        devNum, params =self.verify_serNum(serNum, take_params=True, update=True) # Update devices in 52 line
+    def get_pin_param(self, serNum, cw:int=0, PIN:str=None, PINS:list=[]) -> int | list | None:
+        logger.info(f'get_pin_param() {serNum}, {PIN}')
+        devNum, params =self.verify_serNum(serNum, cw=cw, take_params=True, update=True) # Update devices in 52 line
         logger.info(f'get_pin_param() {devNum}, {params}')
         if devNum is not None:
             if PIN:
@@ -100,27 +103,27 @@ class Sync:
                 logger.info(f'get_pin_param() {devNum}, {serNum}, {result}')
                 return result 
     
-    def set_multi_switch(self, serNum, contact) -> bool:
+    def set_multi_switch(self, serNum, contact, cw:int=0) -> bool:
         devNum = self.verify_serNum(serNum, update=True)
         if devNum is not None:
             value = 2 ** contact - 1
-            self.dll.FCWSetMultiSwitch(self.cw, devNum, value)
+            self.dll.FCWSetMultiSwitch(cw, devNum, value)
             logger.info(f'set_multi_swirch() {devNum}, {serNum}, {value}')
             return True
         return False
     
-    def get_multi_switch(self, serNum:int, mask:int=0, value:int=0, seqNum:int=0) -> int | None:
+    def get_multi_switch(self, serNum:int, cw:int=0, mask:int=0, value:int=0, seqNum:int=0) -> int | None:
         devNum = self.verify_serNum(serNum, update=True)
         if devNum is not None:
             # mask, and value is optional values
-            result = self.dll.FCWGetMultiSwitch(self.cw, devNum, seqNum)
+            result = self.dll.FCWGetMultiSwitch(cw, devNum, seqNum)
             # if use mask, values
             #result = self.dll.FCWGetMultiSwitch(self.cw, devNum, mask, value, seqNum)
             logger.info(f'get_multi_switch() {devNum}, {serNum}, {mask}, {value}, {result}')
             return result 
     
-    def close(self):
-        self.dll.FWCCloseCleware(self.cw)
+    def close(self, cw:int=0):
+        self.dll.FWCCloseCleware(cw)
 
 
 def test():

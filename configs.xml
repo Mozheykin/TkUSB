@@ -1,108 +1,453 @@
 ﻿<?xml version="1.0"?>
 <TkUSB>
      <title>App load on xml</title>
-     <geometry>350x350</geometry>
+     <geometry>720x375</geometry>
      <main_color>gray</main_color>
+     <notebooks>
+          <NB1>
+               <interaction>None</interaction>
+               <on_what>root</on_what>
+               <expand>True</expand>
+               <fill>BOTH</fill>
+               <frames>USB Switch 8,USB Switch 4</frames>
+               <names_frames>NB11,NB12</names_frames>
+               <width>350</width>
+               <height>350</height>
+               <padding>0</padding>
+               <relx>0</relx>
+               <rely>0</rely>
+               <x>0</x>
+               <y>0</y>
+          </NB1>
+          <NB2>
+               <interaction>None</interaction>
+               <on_what>root</on_what>
+               <expand>True</expand>
+               <fill>BOTH</fill>
+               <frames>USB Switch 4,USB 3.0 Connect,USB Multiplexer 2x4</frames>
+               <names_frames>NB21,NB22,NB23</names_frames>
+               <width>200</width>
+               <height>350</height>
+               <padding>0</padding>
+               <relx>0.4</relx>
+               <rely>0</rely>
+               <x>355</x>
+               <y>0</y>
+          </NB2>
+     </notebooks>     
+     <comboboxs>
+          <CB1>
+               <interaction>None</interaction>
+               <on_what>NB21</on_what>
+               <selected_serNum>None</selected_serNum>
+               <operation>None</operation>
+               <width>25</width>
+               <height>10</height>
+               <textvariable>Select device</textvariable>
+               <anchor>CENTER</anchor>
+               <values>Device1,Device2,Device3</values>
+               <relx>0.35</relx>
+               <rely>0.15</rely>
+          </CB1>
+     </comboboxs>
      <buttons>
           <PIN_1>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
                <bg>gray</bg>
-               <text>PIN 1</text>
                <font>Courier 9</font>
                <width>10</width>
                <bd>4</bd>
-               <relief>raised</relief>
-               <command>all_on</command>
-               <operation>CB1</operation>
-               <relx>0.15</relx>
-               <rely>0.25</rely>
+               <relief></relief>
+               <saved>PIN_1</saved>
+               <text_swich>ALL OFF,ALL OFF</text_swich>
+               <relx>0.35</relx>
+               <rely>0.15</rely>
+               <command>all_off</command>
+               <collors>red,green</collors>
                <anchor>CENTER</anchor>
           </PIN_1>
           <PIN_2>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
                <bg>gray</bg>
-               <text>PIN 2</text>
                <font>Courier 9</font>
                <width>10</width>
                <bd>4</bd>
-               <relief>raised</relief>
-               <command>all_off</command>
-               <operation>CB1</operation>
-               <relx>0.15</relx>
-               <rely>0.35</rely>
+               <relief></relief>
+               <saved>PIN_1</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.15</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
                <anchor>CENTER</anchor>
           </PIN_2>
           <PIN_3>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
                <bg>gray</bg>
-               <text>PIN 3</text>
                <font>Courier 9</font>
                <width>10</width>
                <bd>4</bd>
-               <relief>raised</relief>
-               <command>change_collor</command>
-               <operation>CB1</operation>
-               <relx>0.15</relx>
-               <rely>0.45</rely>
+               <relief></relief>
+               <saved>PIN_2</saved>
+               <text_swich>ALL ON,ALL ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.25</rely>
+               <command>all_on</command>
+               <collors>red,green</collors>
                <anchor>CENTER</anchor>
           </PIN_3>
-     </buttons>
-     <labels>
-          <LABEL1>
-               <text>Hello i'm label 1</text>
-               <relx>0.4</relx>
-               <rely>0.15</rely>
-               <anchor>CENTER</anchor>
-          </LABEL1>
-     </labels>
-     <entrys>
-          <ENTRY1>
-               <width>10</width>
-               <relx>0.65</relx>
-               <rely>0.65</rely>
-          </ENTRY1>
-     </entrys>
-     <checkbuttons>
-          <CHECKBUTTON1>
-               <text>Checkbutton1</text>
-               <width>15</width>
-               <relx>0.65</relx>
-               <rely>0.75</rely>
-          </CHECKBUTTON1>
-     </checkbuttons>
-     <img_buttons>
-          <CHB1>
-               <type>check</type>
-               <image>yes</image>
-               <bd>0</bd>
-               <command>change_checkbutton_position</command>
-               <highlightthickness>0</highlightthickness>
-               <activebackground>gray</activebackground>
+          <PIN_4>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
                <bg>gray</bg>
-               <subsample>6</subsample>
-               <relx>0.25</relx>
-               <rely>0.95</rely>
-               <anchor>CENTER</anchor>
-          </CHB1>
-          <CHB2>
-               <type>tick</type>
-               <image>yes</image>
-               <bd>0</bd>
-               <command>change_checkbutton_position</command>
-               <highlightthickness>0</highlightthickness>
-               <activebackground>gray</activebackground>
-               <bg>gray</bg>
-               <subsample>6</subsample>
-               <relx>0.75</relx>
-               <rely>0.50</rely>
-               <anchor>CENTER</anchor>
-          </CHB2>
-     </img_buttons>
-     <comboboxs>
-          <CB1>
+               <font>Courier 9</font>
                <width>10</width>
-               <height>5</height>
-               <operation>Input</operation>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_3</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.35</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_4>
+          <PIN_5>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_4</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.45</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_5>
+          <PIN_6>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_5</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
                <relx>0.35</relx>
                <rely>0.55</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
                <anchor>CENTER</anchor>
-          </CB1>
-     </comboboxs>
+          </PIN_6>
+          <PIN_7>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_6</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.65</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_7>
+          <PIN_8>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_7</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.75</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_8>
+          <PIN_9>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_8</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.85</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_9>
+          <PIN_10>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_2</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.25</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_10>
+          <PIN_11>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_3</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.35</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_11>
+          <PIN_12>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_4</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.35</relx>
+               <rely>0.45</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_12>
+     </buttons>
+     <img_buttons>
+          <IMG_1>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.15</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_1>
+          <IMG_2>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.25</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_2>
+          <IMG_3>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.35</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_3>
+          <IMG_4>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.45</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_4>
+          <IMG_5>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.55</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_5>
+          <IMG_6>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.65</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_6>
+          <IMG_7>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.75</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_7>
+          <IMG_8>
+               <interaction>CB1</interaction>
+               <on_what>NB11</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.85</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_8>
+          <IMG_9>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.15</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_9>
+          <IMG_10>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.25</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_10>
+          <IMG_11>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.35</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_11>
+          <IMG_12>
+               <interaction>CB1</interaction>
+               <on_what>NB12</on_what>
+               <bd>0</bd>
+               <relx>0.15</relx>
+               <rely>0.45</rely>
+               <command>change_checkbutton_position</command>
+               <anchor>CENTER</anchor>
+               <activate>check-yes</activate>
+               <type>check</type>
+               <image>yes</image>
+               <images>yes,no,null</images>
+               <highlightthickness>0</highlightthickness>
+               <activebackground>gray</activebackground>
+               <bg>gray</bg>
+               <subsample>10</subsample>
+          </IMG_12>
+     </img_buttons>
 </TkUSB>

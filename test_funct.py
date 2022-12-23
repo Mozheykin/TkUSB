@@ -1,20 +1,19 @@
 from tkinter import Tk
 from loadConfiguration import load_configurations, save_configurations
-from createObjects import creator
-from classes import Objects
-from pprint import pprint
-from errors import NotConfirationsOnFile
 from other_sync import Sync
-from functions import MAIN_COLLOR, COLLOR1
+from classes import Objects
+from createObjects import CreateObjects
 from functools import partial
+from pprint import pprint
 
 GEOMETRY = '350x350'
 TITLE = 'New app'
 path_user_config = "user_config.xml"
 path_configs = "configs.xml"
+dev_path = "devices.xml"
 
 
-def on_exit(root, dll):
+def on_exit(root):
     _objects = Objects.objects_on_the_panel
     data = {
         'buttons': {},
@@ -25,43 +24,36 @@ def on_exit(root, dll):
             for name, _object in _object_pr.items():
                 match _object_group:
                     case 'buttons': 
-                        if _object[0]['bg'] == COLLOR1:
+                        if _object.object_['bg'] == _object.collors[1]:
                             data[_object_group][name] = '1'
                         else:
                             data[_object_group][name] = '0'
                     case 'img_buttons':
-                        data[_object_group][name] = f'{_object[2]}-{_object[1]}'
-    save_configurations(path_user=path_user_config, objects=data)
-    dll.close()
+                        data[_object_group][name] = f'{_object.activate}'
+    save_configurations(path=path_configs,path_user=path_user_config, objects=data)
+    #dll.close()
     root.destroy()
 
 
 def init_tk() -> None:
     root = Tk()
-    root.config(bg=MAIN_COLLOR)
+    root.config(bg='gray')
     config, config_user = load_configurations(path_user=path_user_config, path_configs=path_configs)
     objects = {item: value for item, value in config['TkUSB'].items() if not item in ['title', 'geometry']}
     heigth, width = config['TkUSB']['geometry'].split('x')
-    dll = Sync(root=root)
-    objects = creator(root=root, dll=dll, objects=objects, config_user=config_user['TkUSB'], heigth=int(heigth), width=int(width))
+    dll = Sync(path_devices=dev_path)
+    Objects.dll = dll
+    CreatObj = CreateObjects(root=root)
+    CreatObj.create_objects(objects=objects, config_user=config_user.get('TkUSB', {}))
     #pprint(sync(root, dll, objects['buttons']))
     root.title(config['TkUSB']['title'])
     root.geometry(config['TkUSB']['geometry'])
-    root.protocol('WM_DELETE_WINDOW', partial(on_exit, root, dll))
+    root.protocol('WM_DELETE_WINDOW', partial(on_exit, root))
     root.mainloop()
-    
-
 
 def main():
-    try:
-        init_tk()
-    except NotConfirationsOnFile:
-        exit('Configuration file not found.')
-    except ValueError:
-        exit('Configuration file is not correct')
-    except KeyError:
-        exit('Confiration file not accept main values')
+    init_tk()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
