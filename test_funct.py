@@ -41,7 +41,7 @@ def init_tk() -> None:
     config, config_user = load_configurations(path_user=path_user_config, path_configs=path_configs)
     objects = {item: value for item, value in config['TkUSB'].items() if not item in ['title', 'geometry']}
     heigth, width = config['TkUSB']['geometry'].split('x')
-    dll = Sync(cw=0)
+    dll = Sync()
     Objects.dll = dll
     CreatObj = CreateObjects(root=root)
     CreatObj.create_objects(objects=objects, config_user=config_user.get('TkUSB', {}))
