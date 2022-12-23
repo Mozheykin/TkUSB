@@ -90,8 +90,8 @@ class Sync:
         return False
     
     def get_pin_param(self, serNum, cw:int=0, PIN:str=None, PINS:list=[]) -> int | list | None:
-        devNum, params =self.verify_serNum(serNum, cw=cw, take_params=True, update=True) # Update devices in 52 line
         logger.info(f'get_pin_param() {devNum}, {params}')
+        devNum, params =self.verify_serNum(serNum, cw=cw, take_params=True, update=True) # Update devices in 52 line
         if devNum is not None:
             if PIN:
                 result = params.get(PIN)
