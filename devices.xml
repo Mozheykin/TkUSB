@@ -3,6 +3,7 @@
         <serNum></serNum>
         <devCnt></devCnt>
         <devType></devType>
-        <devVersion></devVersion>
+        <minVersion></minVersion>
+        <maxVersion></maxVersion>
     </Dev_1>
 </Devices>

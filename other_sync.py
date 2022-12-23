@@ -39,7 +39,7 @@ class Sync:
                 devCnt = None
                 if self._devCnt:
                     for name, pr in self._devCnt['Dvices'].items():
-                        if all([pr['devType'] == devType, pr['devVersion'] == devVersion]):
+                        if all([pr['devType'] == devType, pr['minVersion'] < devVersion, pr['maxVersion'] > devVersion]):
                             devCnt = name
 
                 self.devices[devNum] = {
