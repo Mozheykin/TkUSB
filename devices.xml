@@ -1,7 +1,8 @@
 <Devices>
     <Dev_1>
-        <name></name>
         <serNum></serNum>
-        <type></type>
+        <devCnt></devCnt>
+        <devType></devType>
+        <devVersion></devVersion>
     </Dev_1>
 </Devices>
