@@ -39,8 +39,8 @@ class Sync:
                 devCnt = None
                 if self._devCnt:
                     for name, pr in self._devCnt['Dvices'].items():
-                        if all([pr['devType'] == devType, pr['minVersion'] < devVersion, pr['maxVersion'] > devVersion]):
-                            devCnt = name
+                        if all([pr['expDevType'] == devType, pr['minVersion'] < devVersion, pr['maxVersion'] > devVersion]):
+                            devCnt = pr['devName']
 
                 self.devices[devNum] = {
                     'devCnt': devCnt,
@@ -62,13 +62,19 @@ class Sync:
             return result
 
     def verify_serNum(self, serNum, take_params:bool=False, cw:int=0, update:bool=False) -> int | dict | None:
+        logger.info(f'Inputs: serNim:{serNum}, take_params:{take_params}, cw:{cw}, update:{update}')
         if update:
+            logger.info('verify_serNum devices updated!')
             self.update_all_devices(cw=cw)
+        logger.info(f'devices:{self.devices}')
         for devNum, params in self.devices.items():
             if params['serNum'] == serNum:
+                logger.info(f'SerNum finded:{serNum}')
                 if take_params:
+                    logger.info(f'Output: devNum:{devNum}, params:{params}')
                     return devNum, params
                 else:
+                    logger.info(f'Output: devNum:{devNum}')
                     return devNum
 
     def split_pin_for_set(self, PIN:str) -> int:
@@ -91,7 +97,7 @@ class Sync:
     
     def get_pin_param(self, serNum, cw:int=0, PIN:str=None, PINS:list=[]) -> int | list | None:
         logger.info(f'get_pin_param() {serNum}, {PIN}')
-        devNum, params =self.verify_serNum(serNum, cw=cw, take_params=True, update=True) # Update devices in 52 line
+        devNum, params =self.verify_serNum(serNum, take_params=True, cw=cw, update=True) # Update devices in 52 line
         logger.info(f'get_pin_param() {devNum}, {params}')
         if devNum is not None:
             if PIN:

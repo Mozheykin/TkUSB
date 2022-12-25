@@ -1,9 +1,52 @@
 <Devices>
     <Dev_1>
-        <serNum></serNum>
-        <devCnt></devCnt>
-        <devType></devType>
-        <minVersion></minVersion>
-        <maxVersion></maxVersion>
+        <devName>USB Switch 8</devName>
+        <expDevType>48</expDevType>
+        <minVersion>95</minVersion>
+        <maxVersion>110</maxVersion>
+        <devCnt>-1</devCnt>
+        <serNum>-1</serNum>
+        <devType>-1</devType>
+        <devVersion>-1</devVersion>
     </Dev_1>
+    <Dev_2>
+        <devName>USB Switch 4</devName>
+        <expDevType>8</expDevType>
+        <minVersion>512</minVersion>
+        <maxVersion>524</maxVersion>
+        <devCnt>-1</devCnt>
+        <serNum>-1</serNum>
+        <devType>-1</devType>
+        <devVersion>-1</devVersion>
+    </Dev_2>
+    <Dev_3>
+        <devName>USB Multiplexer 2x4</devName>
+        <expDevType>48</expDevType>
+        <minVersion>128</minVersion>
+        <maxVersion>140</maxVersion>
+        <devCnt>-1</devCnt>
+        <serNum>-1</serNum>
+        <devType>-1</devType>
+        <devVersion>-1</devVersion>
+    </Dev_3>
+    <Dev_4>
+        <devName>USB Multiplexer 1x8</devName>
+        <expDevType>48</expDevType>
+        <minVersion>144</minVersion>
+        <maxVersion>180</maxVersion>
+        <devCnt>-1</devCnt>
+        <serNum>-1</serNum>
+        <devType>-1</devType>
+        <devVersion>-1</devVersion>
+    </Dev_4>
+    <Dev_5>
+        <devName>USB 3.0 Connect</devName>
+        <expDevType>8</expDevType>
+        <minVersion>258</minVersion>
+        <maxVersion>270</maxVersion>
+        <devCnt>-1</devCnt>
+        <serNum>-1</serNum>
+        <devType>-1</devType>
+        <devVersion>-1</devVersion>
+    </Dev_5>
 </Devices>
