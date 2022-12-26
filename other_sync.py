@@ -39,7 +39,7 @@ class Sync:
                 devCnt = None
                 if self._devCnt:
                     for name, pr in self._devCnt['Dvices'].items():
-                        if all([pr['expDevType'] == devType, pr['minVersion'] < devVersion, pr['maxVersion'] > devVersion]):
+                        if all([pr['expDevType'] == devType, int(pr['minVersion']) < devVersion, int(pr['maxVersion']) > devVersion]):
                             devCnt = pr['devName']
 
                 self.devices[devNum] = {
@@ -68,14 +68,19 @@ class Sync:
             self.update_all_devices(cw=cw)
         logger.info(f'devices:{self.devices}')
         for devNum, params in self.devices.items():
-            if params['serNum'] == serNum:
-                logger.info(f'SerNum finded:{serNum}')
+            if str(params['serNum']) == str(serNum):
+                logger.info(f'SerNum founded:{serNum}')
                 if take_params:
                     logger.info(f'Output: devNum:{devNum}, params:{params}')
                     return devNum, params
                 else:
                     logger.info(f'Output: devNum:{devNum}')
                     return devNum
+            else:
+                if take_params:
+                    return -1, {}
+                else:
+                    return -1 
 
     def split_pin_for_set(self, PIN:str) -> int:
         if '_' in PIN:
