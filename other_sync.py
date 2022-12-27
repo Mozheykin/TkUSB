@@ -38,7 +38,7 @@ class Sync:
 
                 devCnt = None
                 if self._devCnt:
-                    for name, pr in self._devCnt['Dvices'].items():
+                    for name, pr in self._devCnt['Devices'].items():
                         if all([pr['expDevType'] == devType, int(pr['minVersion']) < devVersion, int(pr['maxVersion']) > devVersion]):
                             devCnt = pr['devName']
 
@@ -134,7 +134,7 @@ class Sync:
             return result 
     
     def close(self, cw:int=0):
-        self.dll.FWCCloseCleware(cw)
+        self.dll.FCWCloseCleware(cw)
 
 
 def test():
