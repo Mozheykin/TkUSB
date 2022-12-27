@@ -35,6 +35,17 @@
                <y>0</y>
           </NB2>
      </notebooks>     
+     <labelframes>
+          <LF1>
+               <interaction>None</interaction>
+               <on_what>NB22</on_what>
+               <text>Test LabelFrame</text>
+               <width>100</width>
+               <height>50</height>
+               <relx>0.10</relx>
+               <rely>0.15</rely>
+          </LF1>
+     </labelframes>
      <comboboxs>
           <CB1>
                <interaction>None</interaction>

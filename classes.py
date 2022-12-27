@@ -1,5 +1,5 @@
 from typing import NamedTuple
-from tkinter import Button, Label, Entry, Checkbutton
+from tkinter import Button, Label, Entry, Checkbutton, LabelFrame
 from tkinter.ttk import Combobox, Notebook
 from other_sync import Sync
 
@@ -111,7 +111,16 @@ class _Notebook(NamedTuple):
     x:int
     y:int
 
-
+class _LabelFrame(NamedTuple):
+    object_:LabelFrame
+    interaction:str
+    on_what:str
+    name:str
+    text:str
+    height:int
+    width:int
+    relx:float
+    rely:float
 
 class _Device(NamedTuple):
     id_:int

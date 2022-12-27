@@ -1,8 +1,8 @@
-from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage, BOTH, Frame
+from tkinter import Button, CENTER, Label, Entry, Checkbutton, PhotoImage, BOTH, Frame, LabelFrame
 from tkinter.ttk import Combobox, Notebook 
 from functions import COMMANDS
 from functools import partial
-from classes import Objects, _Button, _ImgButton, _Combobox, _Label, _Entry, _Checkbutton, _Notebook
+from classes import Objects, _Button, _ImgButton, _Combobox, _Label, _Entry, _Checkbutton, _Notebook, _LabelFrame
 from pprint import pprint
 
 
@@ -48,6 +48,8 @@ class CreateObjects:
                     self.created_objects[item] = self.create_combobox(comboboxs=value, config_user=config_user.get(item, {}))
                 case 'notebooks':
                     self.created_objects[item] = self.create_notebook(notebooks=value, config_user=config_user.get(item, {}))
+                case 'labelframes':
+                    self.created_objects[item] = self.create_labelframe(labelframes=value, config_user=config_user.get(item, {}))
         Objects.objects_on_the_panel = self.created_objects
 
     def create_button(self, buttons:dict, config_user:dict={}) -> dict:
@@ -355,3 +357,36 @@ class CreateObjects:
             )
             notebook_dict[name] = notebook
         return notebook_dict
+    
+    def create_labelframe(self, labelframes:dict, config_user:dict={}) -> dict:
+        labelframes_dict= {}
+        for name, pr in labelframes.items():
+            ud = config_user.get(name, {})
+            on_what = gp(pr, ud, 'on_what', 'root')
+            interaction:str = gp(pr, ud, 'interaction', 'None')
+            on_what = gp(pr, ud, 'on_what', 'root')
+            text = gp(pr, ud, 'text', 'Empty')
+            height:int = int(gp(pr, ud, 'height', 10))
+            width:int = int(gp(pr, ud, 'width', 10))
+            relx:float = float(gp(pr, ud, 'relx', 0.10))
+            rely:float = float(gp(pr, ud, 'rely', 'root'))
+
+            labelframe = _LabelFrame(
+                object_= LabelFrame(
+                    self.on_what[on_what],
+                    text=text,
+                    height=height,
+                    width=width
+                ),
+                interaction=interaction,
+                on_what=on_what,
+                name=name,
+                text=text,
+                height=height,
+                width=width,
+                relx=relx,
+                rely=rely
+            )
+            labelframe.object_.pack(fill='both', expand='yes')
+            labelframe.object_.place(relx=relx, rely=rely)
+        return labelframes_dict
