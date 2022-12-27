@@ -4,7 +4,6 @@ from other_sync import Sync
 from classes import Objects
 from createObjects import CreateObjects
 from functools import partial
-from pprint import pprint
 
 GEOMETRY = '350x350'
 TITLE = 'New app'
@@ -31,7 +30,7 @@ def on_exit(root):
                     case 'img_buttons':
                         data[_object_group][name] = f'{_object.activate}'
     save_configurations(path=path_configs,path_user=path_user_config, objects=data)
-    #dll.close()
+    Objects.dll.close()
     root.destroy()
 
 

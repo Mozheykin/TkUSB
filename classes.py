@@ -121,6 +121,7 @@ class _LabelFrame(NamedTuple):
     width:int
     relx:float
     rely:float
+    bg:str
 
 class _Device(NamedTuple):
     id_:int

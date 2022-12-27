@@ -3,7 +3,6 @@ from tkinter.ttk import Combobox, Notebook
 from functions import COMMANDS
 from functools import partial
 from classes import Objects, _Button, _ImgButton, _Combobox, _Label, _Entry, _Checkbutton, _Notebook, _LabelFrame
-from pprint import pprint
 
 
 ANCHOR = {
@@ -257,7 +256,6 @@ class CreateObjects:
     def create_combobox(self, comboboxs:dict, config_user:dict={}) -> dict:
         combobox_dict = {}
         Objects.devices = Objects.dll.update_all_devices()
-        print(Objects.devices)
         for name, pr in comboboxs.items():
             _obj = Objects.devices
             if  _obj is not None:
@@ -370,13 +368,15 @@ class CreateObjects:
             width:int = int(gp(pr, ud, 'width', 10))
             relx:float = float(gp(pr, ud, 'relx', 0.10))
             rely:float = float(gp(pr, ud, 'rely', 'root'))
+            bg:str = gp(pr, ud, 'bg', 'gray')
 
             labelframe = _LabelFrame(
                 object_= LabelFrame(
                     self.on_what[on_what],
                     text=text,
                     height=height,
-                    width=width
+                    width=width,
+                    bg=bg
                 ),
                 interaction=interaction,
                 on_what=on_what,
@@ -385,8 +385,10 @@ class CreateObjects:
                 height=height,
                 width=width,
                 relx=relx,
-                rely=rely
+                rely=rely,
+                bg=bg
             )
+            self.on_what[name] = labelframe.object_
             labelframe.object_.pack(fill='both', expand='yes')
             labelframe.object_.place(relx=relx, rely=rely)
         return labelframes_dict
