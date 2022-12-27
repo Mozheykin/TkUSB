@@ -72,6 +72,48 @@
                <rely>0.15</rely>
           </CB1>
      </comboboxs>
+     <labels>
+          <LB1>
+               <text>Mask</text>
+               <interation>None</interation>
+               <on_what>LF1</on_what>
+               <background>gray</background>
+               <highlightthickness>0</highlightthickness>
+               <relx>0.25</relx>
+               <rely>0.10</rely>
+               <anchor>CENTER</anchor>
+          </LB1>
+          <LB2>
+               <text>Pin</text>
+               <interation>None</interation>
+               <on_what>LF1</on_what>
+               <background>gray</background>
+               <highlightthickness>0</highlightthickness>
+               <relx>0.45</relx>
+               <rely>0.10</rely>
+               <anchor>CENTER</anchor>
+          </LB2>
+          <LB3>
+               <text>Switch</text>
+               <interation>None</interation>
+               <on_what>LF1</on_what>
+               <background>gray</background>
+               <highlightthickness>0</highlightthickness>
+               <relx>0.55</relx>
+               <rely>0.10</rely>
+               <anchor>CENTER</anchor>
+          </LB3>
+          <LB4>
+               <text>Description</text>
+               <interation>None</interation>
+               <on_what>LF1</on_what>
+               <background>gray</background>
+               <highlightthickness>0</highlightthickness>
+               <relx>0.65</relx>
+               <rely>0.10</rely>
+               <anchor>CENTER</anchor>
+          </LB4>
+     </labels>
      <buttons>
           <PIN_1>
                <interaction>CB1</interaction>
