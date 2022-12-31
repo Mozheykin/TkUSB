@@ -86,9 +86,13 @@ def get_picture(name_button:str, change_x:int, change_y:int) -> PhotoImage:
 def get_position_object(_object):
     return _object.winfo_x(), _object.winfo_y()
 
+def rename(root, name:str, _type:str) -> None:
+    pass
+
 COMMANDS = {
     'all_on': all_on,
     'all_off': all_off,
     'change_collor': change_collor,
     'change_checkbutton_position': change_checkbutton_position,
+    'rename': rename,
 }

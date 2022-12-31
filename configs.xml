@@ -26,7 +26,7 @@
                <fill>BOTH</fill>
                <frames>USB Multiplexer 2x4,USB Multiplexer 1x8,USB 3.0 Connect</frames>
                <names_frames>NB21,NB22,NB23</names_frames>
-               <width>200</width>
+               <width>360</width>
                <height>350</height>
                <padding>0</padding>
                <relx>0.4</relx>
@@ -159,7 +159,7 @@
                <on_what>LF1</on_what>
                <background>gray</background>
                <highlightthickness>0</highlightthickness>
-               <relx>0.20</relx>
+               <relx>0.17</relx>
                <rely>0.04</rely>
                <anchor>CENTER</anchor>
           </LB9>
@@ -169,7 +169,7 @@
                <on_what>LF1</on_what>
                <background>gray</background>
                <highlightthickness>0</highlightthickness>
-               <relx>0.50</relx>
+               <relx>0.42</relx>
                <rely>0.04</rely>
                <anchor>CENTER</anchor>
           </LB10>
@@ -179,7 +179,7 @@
                <on_what>LF2</on_what>
                <background>gray</background>
                <highlightthickness>0</highlightthickness>
-               <relx>0.20</relx>
+               <relx>0.17</relx>
                <rely>0.04</rely>
                <anchor>CENTER</anchor>
           </LB11>
@@ -189,7 +189,7 @@
                <on_what>LF2</on_what>
                <background>gray</background>
                <highlightthickness>0</highlightthickness>
-               <relx>0.50</relx>
+               <relx>0.42</relx>
                <rely>0.04</rely>
                <anchor>CENTER</anchor>
           </LB12>
@@ -314,6 +314,116 @@
                <anchor>CENTER</anchor>
           </LB24>
      </labels>
+     <entrys>
+          <EN1>
+               <text>NONE</text>
+               <on_what>LF1</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.20</rely>
+               <anchor>CENTER</anchor>
+          </EN1>
+          <EN2>
+               <text>NONE</text>
+               <on_what>LF1</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.30</rely>
+               <anchor>CENTER</anchor>
+          </EN2>
+          <EN3>
+               <text>NONE</text>
+               <on_what>LF1</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.40</rely>
+               <anchor>CENTER</anchor>
+          </EN3>
+          <EN4>
+               <text>NONE</text>
+               <on_what>LF1</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.50</rely>
+               <anchor>CENTER</anchor>
+          </EN4>
+          <EN5>
+               <text>NONE</text>
+               <on_what>LF1</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.60</rely>
+               <anchor>CENTER</anchor>
+          </EN5>
+          <EN6>
+               <text>NONE</text>
+               <on_what>LF1</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.70</rely>
+               <anchor>CENTER</anchor>
+          </EN6>
+          <EN7>
+               <text>NONE</text>
+               <on_what>LF1</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.80</rely>
+               <anchor>CENTER</anchor>
+          </EN7>
+          <EN8>
+               <text>NONE</text>
+               <on_what>LF1</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.90</rely>
+               <anchor>CENTER</anchor>
+          </EN8>
+          <EN9>
+               <text>NONE</text>
+               <on_what>LF2</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.20</rely>
+               <anchor>CENTER</anchor>
+          </EN9>
+          <EN10>
+               <text>NONE</text>
+               <on_what>LF2</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.30</rely>
+               <anchor>CENTER</anchor>
+          </EN10>
+          <EN11>
+               <text>NONE</text>
+               <on_what>LF2</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.40</rely>
+               <anchor>CENTER</anchor>
+          </EN11>
+          <EN12>
+               <text>NONE</text>
+               <on_what>LF2</on_what>
+               <weidth>17</weidth>
+               <heigth>10</heigth>
+               <relx>0.82</relx>
+               <rely>0.50</rely>
+               <anchor>CENTER</anchor>
+          </EN12>
+     </entrys>
      <buttons>
           <PIN_1>
                <interaction>CB1</interaction>
@@ -324,10 +434,10 @@
                <bd>4</bd>
                <relief></relief>
                <saved>PIN_1</saved>
-               <text_swich>ALL OFF,ALL OFF</text_swich>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
                <relx>0.40</relx>
                <rely>0.20</rely>
-               <command>all_off</command>
+               <command>change_collor</command>
                <collors>red,green</collors>
                <anchor>CENTER</anchor>
           </PIN_1>
@@ -356,10 +466,10 @@
                <bd>4</bd>
                <relief></relief>
                <saved>PIN_2</saved>
-               <text_swich>ALL ON,ALL ON</text_swich>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
                <relx>0.40</relx>
                <rely>0.30</rely>
-               <command>all_on</command>
+               <command>change_collor</command>
                <collors>red,green</collors>
                <anchor>CENTER</anchor>
           </PIN_3>
@@ -507,7 +617,51 @@
                <collors>red,green</collors>
                <anchor>CENTER</anchor>
           </PIN_12>
+          <BT_1>
+               <interaction>CB1</interaction>
+               <on_what>LF1</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>7</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>BT_1</saved>
+               <text_swich>RENAME,RENAME</text_swich>
+               <relx>0.62</relx>
+               <rely>0.05</rely>
+               <command>rename</command>
+               <collors>gray,gray</collors>
+               <anchor>CENTER</anchor>
+          </BT_1>
+          <BT_2>
+               <interaction>CB1</interaction>
+               <on_what>LF2</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>7</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>BT_2</saved>
+               <text_swich>RENAME,RENAME</text_swich>
+               <relx>0.70</relx>
+               <rely>0.05</rely>
+               <command>rename</command>
+               <collors>gray,gray</collors>
+               <anchor>CENTER</anchor>
+          </BT_2>
      </buttons>
+     <checkbuttons>
+          <CB_1>
+               <interaction>None</interaction>
+               <on_what>LF1</on_what>
+               <width>10</width>
+               <text>All OFF on EXIT</text>
+               <background>gray</background>
+               <relx>0.9</relx>
+               <rely>0.05</rely>
+               <anchor>CENTER</anchor>
+          </CB_1>
+     </checkbuttons>
      <img_buttons>
           <IMG_1>
                <interaction>CB1</interaction>
@@ -734,7 +888,7 @@
                <interaction>CB1</interaction>
                <on_what>LF1</on_what>
                <bd>0</bd>
-               <relx>0.35</relx>
+               <relx>0.29</relx>
                <rely>0.04</rely>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
@@ -768,7 +922,7 @@
                <interaction>CB1</interaction>
                <on_what>LF2</on_what>
                <bd>0</bd>
-               <relx>0.35</relx>
+               <relx>0.29</relx>
                <rely>0.04</rely>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
