@@ -89,10 +89,14 @@ def get_position_object(_object):
 def rename(root, name:str, _type:str) -> None:
     pass
 
+def set_collor(root, name:str, _type:str) -> None:
+    pass
+
 COMMANDS = {
     'all_on': all_on,
     'all_off': all_off,
     'change_collor': change_collor,
     'change_checkbutton_position': change_checkbutton_position,
     'rename': rename,
+    'set_collor': set_collor,
 }
