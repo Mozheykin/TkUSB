@@ -56,21 +56,64 @@
                <rely>0.02</rely>
                <bg>gray</bg>
           </LF2>
+          <LF3>
+               <interaction>None</interaction>
+               <on_what>NB21</on_what>
+               <text>USB Multiplexer 2x4</text>
+               <width>345</width>
+               <height>310</height>
+               <relx>0.02</relx>
+               <rely>0.02</rely>
+               <bg>gray</bg>
+          </LF3>
+          <LF4>
+               <interaction>None</interaction>
+               <on_what>NB22</on_what>
+               <text>USB Multiplexer 1x8</text>
+               <width>345</width>
+               <height>300</height>
+               <relx>0.02</relx>
+               <rely>0.02</rely>
+               <bg>gray</bg>
+          </LF4>
+          <LF5>
+               <interaction>None</interaction>
+               <on_what>NB23</on_what>
+               <text>USB 3.0 Connect</text>
+               <width>345</width>
+               <height>300</height>
+               <relx>0.02</relx>
+               <rely>0.02</rely>
+               <bg>gray</bg>
+          </LF5>
      </labelframes>
      <comboboxs>
           <CB1>
                <interaction>None</interaction>
-               <on_what>NB21</on_what>
+               <on_what>LF3</on_what>
                <selected_serNum>None</selected_serNum>
                <operation>None</operation>
-               <width>25</width>
+               <width>12</width>
                <height>10</height>
                <textvariable>Select device</textvariable>
                <anchor>CENTER</anchor>
                <values>Device1,Device2,Device3</values>
-               <relx>0.35</relx>
+               <relx>0.32</relx>
                <rely>0.15</rely>
           </CB1>
+          <CB2>
+               <interaction>None</interaction>
+               <on_what>LF3</on_what>
+               <selected_serNum>None</selected_serNum>
+               <operation>None</operation>
+               <width>12</width>
+               <height>10</height>
+               <textvariable>Select device</textvariable>
+               <anchor>CENTER</anchor>
+               <values>Device1,Device2,Device3</values>
+               <relx>0.82</relx>
+               <rely>0.15</rely>
+          </CB2>
      </comboboxs>
      <labels>
           <LB1>
@@ -313,6 +356,26 @@
                <rely>0.50</rely>
                <anchor>CENTER</anchor>
           </LB24>
+          <LB25>
+               <text>Input USB</text>
+               <interation>None</interation>
+               <on_what>LF3</on_what>
+               <background>gray</background>
+               <highlightthickness>0</highlightthickness>
+               <relx>0.10</relx>
+               <rely>0.15</rely>
+               <anchor>CENTER</anchor>
+          </LB25>
+          <LB26>
+               <text>Output USB</text>
+               <interation>None</interation>
+               <on_what>LF3</on_what>
+               <background>gray</background>
+               <highlightthickness>0</highlightthickness>
+               <relx>0.58</relx>
+               <rely>0.15</rely>
+               <anchor>CENTER</anchor>
+          </LB26>
      </labels>
      <entrys>
           <EN1>
@@ -888,7 +951,7 @@
                <activate>switch-On</activate>
                <type>switch</type>
                <image>On</image>
-               <images>On,Off,On,Off</images>
+               <images>On,Off</images>
                <highlightthickness>0</highlightthickness>
                <activebackground>gray</activebackground>
                <bg>gray</bg>
@@ -902,14 +965,14 @@
                <rely>0.04</rely>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
-               <activate>check-yes</activate>
-               <type>check</type>
-               <image>yes</image>
-               <images>yes,no,null</images>
+               <activate>swictch-On</activate>
+               <type>switch</type>
+               <image>On</image>
+               <images>On,Off</images>
                <highlightthickness>0</highlightthickness>
                <activebackground>gray</activebackground>
                <bg>gray</bg>
-               <subsample>10</subsample>
+               <subsample>1</subsample>
           </IMG_14>
           <IMG_15>
                <interaction>CB1</interaction>
@@ -919,14 +982,14 @@
                <rely>0.04</rely>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
-               <activate>check-yes</activate>
-               <type>check</type>
-               <image>yes</image>
-               <images>yes,no,null</images>
+               <activate>switch-On</activate>
+               <type>switch</type>
+               <image>On</image>
+               <images>On,Off</images>
                <highlightthickness>0</highlightthickness>
                <activebackground>gray</activebackground>
                <bg>gray</bg>
-               <subsample>10</subsample>
+               <subsample>1</subsample>
           </IMG_15>
           <IMG_16>
                <interaction>CB1</interaction>
@@ -936,14 +999,14 @@
                <rely>0.04</rely>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
-               <activate>check-yes</activate>
-               <type>check</type>
-               <image>yes</image>
-               <images>yes,no,null</images>
+               <activate>switch-On</activate>
+               <type>switch</type>
+               <image>On</image>
+               <images>On,Off</images>
                <highlightthickness>0</highlightthickness>
                <activebackground>gray</activebackground>
                <bg>gray</bg>
-               <subsample>10</subsample>
+               <subsample>1</subsample>
           </IMG_16>
           <IMG_17>
                <interaction>IMG_1</interaction>

@@ -54,7 +54,10 @@ def change_collor(root, name:str, _type:str, collor:str=None) -> None:
 def change_checkbutton_position(root, name:str, _type:str) -> None:
     objects_ = Objects.objects_on_the_panel.get(_type)
     object_ = objects_.get(name)
-    state = {0:1,1:2,2:0}
+    if len(object_.images) == 3:
+        state = {0:1,1:2,2:0}
+    elif len(object_.images) == 2:
+        state = {0:1,1:0}
     act = state[object_.act]
     object_ = object_._replace(act=act)
     images = object_.images
