@@ -86,6 +86,16 @@
                <rely>0.02</rely>
                <bg>gray</bg>
           </LF5>
+          <LF6>
+               <interaction>None</interaction>
+               <on_what>LF3</on_what>
+               <text>Current USB Connection</text>
+               <width>230</width>
+               <height>45</height>
+               <relx>0.30</relx>
+               <rely>0.20</rely>
+               <bg>gray</bg>
+          </LF6>
      </labelframes>
      <comboboxs>
           <CB1>
@@ -712,6 +722,38 @@
                <collors>gray,gray</collors>
                <anchor>CENTER</anchor>
           </BT_2>
+          <BT_3>
+               <interaction>CB1</interaction>
+               <on_what>LF3</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>7</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>BT_2</saved>
+               <text_swich>RENAME,RENAME</text_swich>
+               <relx>0.62</relx>
+               <rely>0.05</rely>
+               <command>rename</command>
+               <collors>gray,gray</collors>
+               <anchor>CENTER</anchor>
+          </BT_3>
+          <PIN_13>
+               <interaction>CB1</interaction>
+               <on_what>LF3</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_9</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.15</relx>
+               <rely>0.30</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_13>
      </buttons>
      <checkbuttons>
           <CB_1>
@@ -734,6 +776,16 @@
                <rely>0.05</rely>
                <anchor>CENTER</anchor>
           </CB_2>
+          <CB_3>
+               <interaction>None</interaction>
+               <on_what>LF3</on_what>
+               <width>7</width>
+               <text>All OFF</text>
+               <background>gray</background>
+               <relx>0.83</relx>
+               <rely>0.05</rely>
+               <anchor>CENTER</anchor>
+          </CB_3>
      </checkbuttons>
      <img_buttons>
           <IMG_1>
