@@ -71,7 +71,7 @@
                <on_what>NB22</on_what>
                <text>USB Multiplexer 1x8</text>
                <width>345</width>
-               <height>300</height>
+               <height>120</height>
                <relx>0.02</relx>
                <rely>0.02</rely>
                <bg>gray</bg>
@@ -81,7 +81,7 @@
                <on_what>NB23</on_what>
                <text>USB 3.0 Connect</text>
                <width>345</width>
-               <height>300</height>
+               <height>120</height>
                <relx>0.02</relx>
                <rely>0.02</rely>
                <bg>gray</bg>
@@ -96,6 +96,26 @@
                <rely>0.5</rely>
                <bg>gray</bg>
           </LF6>
+          <LF7>
+               <interaction>None</interaction>
+               <on_what>LF4</on_what>
+               <text>Current USB Connection</text>
+               <width>230</width>
+               <height>45</height>
+               <relx>0.30</relx>
+               <rely>0.5</rely>
+               <bg>gray</bg>
+          </LF7>
+          <LF8>
+               <interaction>None</interaction>
+               <on_what>LF5</on_what>
+               <text>Current USB Connection</text>
+               <width>230</width>
+               <height>45</height>
+               <relx>0.30</relx>
+               <rely>0.5</rely>
+               <bg>gray</bg>
+          </LF8>
      </labelframes>
      <comboboxs>
           <CB1>
@@ -124,6 +144,58 @@
                <relx>0.82</relx>
                <rely>0.40</rely>
           </CB2>
+          <CB3>
+               <interaction>None</interaction>
+               <on_what>LF4</on_what>
+               <selected_serNum>None</selected_serNum>
+               <operation>None</operation>
+               <width>12</width>
+               <height>10</height>
+               <textvariable>Select device</textvariable>
+               <anchor>CENTER</anchor>
+               <values>Device1,Device2,Device3</values>
+               <relx>0.32</relx>
+               <rely>0.40</rely>
+          </CB3>
+          <CB4>
+               <interaction>None</interaction>
+               <on_what>LF4</on_what>
+               <selected_serNum>None</selected_serNum>
+               <operation>None</operation>
+               <width>12</width>
+               <height>10</height>
+               <textvariable>Select device</textvariable>
+               <anchor>CENTER</anchor>
+               <values>Device1,Device2,Device3</values>
+               <relx>0.82</relx>
+               <rely>0.40</rely>
+          </CB4>
+          <CB5>
+               <interaction>None</interaction>
+               <on_what>LF5</on_what>
+               <selected_serNum>None</selected_serNum>
+               <operation>None</operation>
+               <width>12</width>
+               <height>10</height>
+               <textvariable>Select device</textvariable>
+               <anchor>CENTER</anchor>
+               <values>Device1,Device2,Device3</values>
+               <relx>0.32</relx>
+               <rely>0.40</rely>
+          </CB5>
+          <CB6>
+               <interaction>None</interaction>
+               <on_what>LF5</on_what>
+               <selected_serNum>None</selected_serNum>
+               <operation>None</operation>
+               <width>12</width>
+               <height>10</height>
+               <textvariable>Select device</textvariable>
+               <anchor>CENTER</anchor>
+               <values>Device1,Device2,Device3</values>
+               <relx>0.82</relx>
+               <rely>0.40</rely>
+          </CB6>
      </comboboxs>
      <labels>
           <LB1>
@@ -386,6 +458,46 @@
                <rely>0.40</rely>
                <anchor>CENTER</anchor>
           </LB26>
+          <LB27>
+               <text>Input USB</text>
+               <interation>None</interation>
+               <on_what>LF4</on_what>
+               <background>gray</background>
+               <highlightthickness>0</highlightthickness>
+               <relx>0.10</relx>
+               <rely>0.40</rely>
+               <anchor>CENTER</anchor>
+          </LB27>
+          <LB28>
+               <text>Output USB</text>
+               <interation>None</interation>
+               <on_what>LF4</on_what>
+               <background>gray</background>
+               <highlightthickness>0</highlightthickness>
+               <relx>0.58</relx>
+               <rely>0.40</rely>
+               <anchor>CENTER</anchor>
+          </LB28>
+          <LB29>
+               <text>Input USB</text>
+               <interation>None</interation>
+               <on_what>LF5</on_what>
+               <background>gray</background>
+               <highlightthickness>0</highlightthickness>
+               <relx>0.10</relx>
+               <rely>0.40</rely>
+               <anchor>CENTER</anchor>
+          </LB29>
+          <LB30>
+               <text>Output USB</text>
+               <interation>None</interation>
+               <on_what>LF5</on_what>
+               <background>gray</background>
+               <highlightthickness>0</highlightthickness>
+               <relx>0.58</relx>
+               <rely>0.40</rely>
+               <anchor>CENTER</anchor>
+          </LB30>
      </labels>
      <entrys>
           <EN1>
@@ -514,6 +626,42 @@
                <rely>0.37</rely>
                <anchor>CENTER</anchor>
           </EN14>
+          <EN15>
+               <text>NONE</text>
+               <on_what>LF7</on_what>
+               <weidth>15</weidth>
+               <heigth>10</heigth>
+               <relx>0.22</relx>
+               <rely>0.37</rely>
+               <anchor>CENTER</anchor>
+          </EN15>
+          <EN16>
+               <text>NONE</text>
+               <on_what>LF7</on_what>
+               <weidth>15</weidth>
+               <heigth>10</heigth>
+               <relx>0.77</relx>
+               <rely>0.37</rely>
+               <anchor>CENTER</anchor>
+          </EN16>
+          <EN17>
+               <text>NONE</text>
+               <on_what>LF8</on_what>
+               <weidth>15</weidth>
+               <heigth>10</heigth>
+               <relx>0.22</relx>
+               <rely>0.37</rely>
+               <anchor>CENTER</anchor>
+          </EN17>
+          <EN18>
+               <text>NONE</text>
+               <on_what>LF8</on_what>
+               <weidth>15</weidth>
+               <heigth>10</heigth>
+               <relx>0.77</relx>
+               <rely>0.37</rely>
+               <anchor>CENTER</anchor>
+          </EN18>
      </entrys>
      <buttons>
           <PIN_1>
@@ -745,12 +893,12 @@
                <on_what>LF3</on_what>
                <bg>gray</bg>
                <font>Courier 9</font>
-               <width>7</width>
+               <width>10</width>
                <bd>4</bd>
                <relief></relief>
                <saved>BT_2</saved>
-               <text_swich>RENAME,RENAME</text_swich>
-               <relx>0.62</relx>
+               <text_swich>RENAME III,RENAME III</text_swich>
+               <relx>0.60</relx>
                <rely>0.1</rely>
                <command>rename</command>
                <collors>gray,gray</collors>
@@ -820,6 +968,102 @@
                <collors>gray,greay</collors>
                <anchor>CENTER</anchor>
           </PIN_16>
+          <BT_4>
+               <interaction>CB1</interaction>
+               <on_what>LF4</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>BT_2</saved>
+               <text_swich>RENAME IV,RENAME IV</text_swich>
+               <relx>0.60</relx>
+               <rely>0.1</rely>
+               <command>rename</command>
+               <collors>gray,gray</collors>
+               <anchor>CENTER</anchor>
+          </BT_4>
+          <PIN_17>
+               <interaction>CB1</interaction>
+               <on_what>LF4</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_9</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.15</relx>
+               <rely>0.78</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_17>
+          <BT_5>
+               <interaction>CB1</interaction>
+               <on_what>LF5</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>BT_2</saved>
+               <text_swich>RENAME V,RENAME V</text_swich>
+               <relx>0.60</relx>
+               <rely>0.1</rely>
+               <command>rename</command>
+               <collors>gray,gray</collors>
+               <anchor>CENTER</anchor>
+          </BT_5>
+          <PIN_18>
+               <interaction>CB1</interaction>
+               <on_what>LF5</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_9</saved>
+               <text_swich>STATUS OFF,STATUS ON</text_swich>
+               <relx>0.15</relx>
+               <rely>0.78</rely>
+               <command>change_collor</command>
+               <collors>red,green</collors>
+               <anchor>CENTER</anchor>
+          </PIN_18>
+          <PIN_19>
+               <interaction>CB1</interaction>
+               <on_what>NB22</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_11</saved>
+               <text_swich>Set III,Set III</text_swich>
+               <relx>0.15</relx>
+               <rely>0.41</rely>
+               <command>change_collor</command>
+               <collors>gray,greay</collors>
+               <anchor>CENTER</anchor>
+          </PIN_19>
+          <PIN_20>
+               <interaction>CB1</interaction>
+               <on_what>NB23</on_what>
+               <bg>gray</bg>
+               <font>Courier 9</font>
+               <width>10</width>
+               <bd>4</bd>
+               <relief></relief>
+               <saved>PIN_11</saved>
+               <text_swich>Set III,Set III</text_swich>
+               <relx>0.15</relx>
+               <rely>0.41</rely>
+               <command>change_collor</command>
+               <collors>gray,greay</collors>
+               <anchor>CENTER</anchor>
+          </PIN_20>
      </buttons>
      <checkbuttons>
           <CB_1>
@@ -852,6 +1096,26 @@
                <rely>0.1</rely>
                <anchor>CENTER</anchor>
           </CB_3>
+          <CB_4>
+               <interaction>None</interaction>
+               <on_what>LF4</on_what>
+               <width>7</width>
+               <text>All OFF</text>
+               <background>gray</background>
+               <relx>0.83</relx>
+               <rely>0.1</rely>
+               <anchor>CENTER</anchor>
+          </CB_4>
+          <CB_5>
+               <interaction>None</interaction>
+               <on_what>LF5</on_what>
+               <width>7</width>
+               <text>All OFF</text>
+               <background>gray</background>
+               <relx>0.83</relx>
+               <rely>0.1</rely>
+               <anchor>CENTER</anchor>
+          </CB_5>
      </checkbuttons>
      <img_buttons>
           <IMG_1>
