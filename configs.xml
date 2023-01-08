@@ -1119,11 +1119,12 @@
      </checkbuttons>
      <img_buttons>
           <IMG_1>
-               <interaction>CB1</interaction>
+               <interaction>PIN_1</interaction>
                <on_what>LF1</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.20</rely>
+               <saved>IMG_1</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1136,11 +1137,12 @@
                <subsample>10</subsample>
           </IMG_1>
           <IMG_2>
-               <interaction>CB1</interaction>
+               <interaction>PIN_2</interaction>
                <on_what>LF1</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.30</rely>
+               <saved>IMG_2</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1153,11 +1155,12 @@
                <subsample>10</subsample>
           </IMG_2>
           <IMG_3>
-               <interaction>CB1</interaction>
+               <interaction>PIN_3</interaction>
                <on_what>LF1</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.40</rely>
+               <saved>IMG_3</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1170,11 +1173,12 @@
                <subsample>10</subsample>
           </IMG_3>
           <IMG_4>
-               <interaction>CB1</interaction>
+               <interaction>PIN_4</interaction>
                <on_what>LF1</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.50</rely>
+               <saved>IMG_4</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1187,11 +1191,12 @@
                <subsample>10</subsample>
           </IMG_4>
           <IMG_5>
-               <interaction>CB1</interaction>
+               <interaction>PIN_5</interaction>
                <on_what>LF1</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.60</rely>
+               <saved>IMG_5</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1204,11 +1209,12 @@
                <subsample>10</subsample>
           </IMG_5>
           <IMG_6>
-               <interaction>CB1</interaction>
+               <interaction>PIN_6</interaction>
                <on_what>LF1</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.70</rely>
+               <saved>IMG_6</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1221,11 +1227,12 @@
                <subsample>10</subsample>
           </IMG_6>
           <IMG_7>
-               <interaction>CB1</interaction>
+               <interaction>PIN_7</interaction>
                <on_what>LF1</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.80</rely>
+               <saved>IMG_7</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1238,11 +1245,12 @@
                <subsample>10</subsample>
           </IMG_7>
           <IMG_8>
-               <interaction>CB1</interaction>
+               <interaction>PIN_8</interaction>
                <on_what>LF1</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.90</rely>
+               <saved>IMG_8</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1255,11 +1263,12 @@
                <subsample>10</subsample>
           </IMG_8>
           <IMG_9>
-               <interaction>CB1</interaction>
+               <interaction>PIN_1</interaction>
                <on_what>LF2</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.20</rely>
+               <saved>IMG_1</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1272,11 +1281,12 @@
                <subsample>10</subsample>
           </IMG_9>
           <IMG_10>
-               <interaction>CB1</interaction>
+               <interaction>PIN_2</interaction>
                <on_what>LF2</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.30</rely>
+               <saved>IMG_2</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1289,11 +1299,12 @@
                <subsample>10</subsample>
           </IMG_10>
           <IMG_11>
-               <interaction>CB1</interaction>
+               <interaction>PIN_3</interaction>
                <on_what>LF2</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.40</rely>
+               <saved>IMG_3</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>
@@ -1306,11 +1317,12 @@
                <subsample>10</subsample>
           </IMG_11>
           <IMG_12>
-               <interaction>CB1</interaction>
+               <interaction>PIN_4</interaction>
                <on_what>LF2</on_what>
                <bd>0</bd>
                <relx>0.05</relx>
                <rely>0.50</rely>
+               <saved>IMG_4</saved>
                <command>change_checkbutton_position</command>
                <anchor>CENTER</anchor>
                <activate>check-yes</activate>

@@ -27,9 +27,21 @@ def all_off(root, name:str, _type:str) -> None:
             Objects.objects_on_the_panel[_type][name] = object_
 
 
+def get_mask(button_name:str) -> str | None:
+    img_buttons = Objects.objects_on_the_panel.get('img_buttons')
+    if img_buttons:
+        for pr in img_buttons.values():
+            if pr.interaction == button_name:
+                return pr.activate.split('-')[1]
+
+
 def change_collor(root, name:str, _type:str, collor:str=None) -> None:
     objects_ = Objects.objects_on_the_panel.get(_type)
     object_ = objects_.get(name)
+    # I get a mask and if it is possible to change the value, then changing it, if not, then I skip
+    interaction_mask = get_mask(button_name=object_.saved)
+    if any([interaction_mask == 'no', interaction_mask == 'null']):
+        return None
     state = {0:1, 1:0}
     object_ = object_._replace(activate=state[object_.activate])
     object_.object_['bg'] = object_.collors[object_.activate]

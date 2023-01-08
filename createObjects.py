@@ -176,6 +176,7 @@ class CreateObjects:
             command:str = gp(pr, ud, 'command', 'change_checkbutton_position') 
             anchor:str = gp(pr, ud, 'anchor', 'CENTER')
             activate:str = gp(pr, ud, 'activate', 'check-yes')
+            saved:str = gp(pr, ud, 'saved', 'IMG_')
             type_:str = gp(pr, ud, 'type', 'check')
             image:str = gp(pr, ud, 'image', 'yes')
             images:list = gp(pr, ud, 'images', 'yes,no,null').split(',') 
@@ -202,6 +203,7 @@ class CreateObjects:
                 name=name,
                 relx=relx,
                 rely=rely,
+                saved=saved,
                 command=command,
                 anchor=anchor,
                 activate=activate,

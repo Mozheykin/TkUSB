@@ -55,6 +55,7 @@ class _ImgButton(NamedTuple):
     relx:float
     rely:float
     command:str #= 'change_checkbutton_position'
+    saved:str
     anchor:str
     activate:str
     type_:str
