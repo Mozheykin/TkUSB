@@ -393,4 +393,5 @@ class CreateObjects:
             self.on_what[name] = labelframe.object_
             labelframe.object_.pack(fill='both', expand='yes')
             labelframe.object_.place(relx=relx, rely=rely)
+            labelframes_dict[name] = labelframe
         return labelframes_dict

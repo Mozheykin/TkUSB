@@ -63,14 +63,11 @@ def change_collor(root, name:str, _type:str, collor:str=None) -> None:
     Objects.objects_on_the_panel[_type][name] = object_
 
 
-def change_checkbutton_position(root, name:str, _type:str) -> None:
-    objects_ = Objects.objects_on_the_panel.get(_type)
-    object_ = objects_.get(name)
-    if len(object_.images) == 3:
-        state = {0:1,1:2,2:0}
-    elif len(object_.images) == 2:
-        state = {0:1,1:0}
-    act = state[object_.act]
+def button_redrawing(object_, root, act:int, name:str, _type:str):
+    where_objects_are_placed = {**Objects.objects_on_the_panel.get('labelframes', {}), **Objects.objects_on_the_panel.get('notebooks', {})}
+    for _name, pr in where_objects_are_placed.items():
+        if _name == object_.on_what:
+            root = pr.object_
     object_ = object_._replace(act=act)
     images = object_.images
     activate=f'{object_.type_}-{images[act]}'
@@ -91,6 +88,21 @@ def change_checkbutton_position(root, name:str, _type:str) -> None:
     object_.object_.pack(pady=5)
     object_.object_.place(relx=object_.relx, rely=object_.rely, anchor=CENTER)
     Objects.objects_on_the_panel[_type][name] = object_
+    return object_
+
+
+def change_checkbutton_position(root, name:str, _type:str) -> None:
+    objects_ = Objects.objects_on_the_panel.get(_type)
+    object_ = objects_.get(name)
+    if len(object_.images) == 3:
+        state = {0:1,1:2,2:0}
+    elif len(object_.images) == 2:
+        state = {0:1,1:0}
+    act = state[object_.act]
+    button_redrawing(object_=object_, root=root, act=act, name=name, _type=_type)
+    for any_name, any_object_ in objects_.items():
+        if object_.saved == any_object_.saved:
+            button_redrawing(object_=any_object_, root=root, act=act, name=any_name, _type=_type)
 
 
 def get_picture(name_button:str, change_x:int, change_y:int) -> PhotoImage:
